@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mailwand — Email templates, signatures & follow-up reminders for Gmail, Outlook & Yahoo</title>
+<meta name="description" content="Save reusable email templates and signatures, insert them with one click or a /shortcut, and set follow-up reminders. Works in Gmail, Outlook, Hotmail and Yahoo Mail. Private by design — everything stays on your device." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='m3 7 9 6 9-6'/%3E%3C/svg%3E" />
+<style>
+  :root{
+    --indigo:#4f46e5; --indigo2:#6366f1; --ink:#111827; --body:#374151;
+    --muted:#6b7280; --line:#e5e7eb; --bg:#ffffff; --soft:#f8f7ff; --soft2:#f3f4f6;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--body);line-height:1.65;background:var(--bg);}
+  a{color:var(--indigo);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px;}
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink);font-size:18px;}
+  .brand svg{flex:none;}
+  .nav-links{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:600;}
+  .nav-links a{color:var(--body);}
+  .btn{display:inline-block;background:var(--indigo);color:#fff;font-weight:700;padding:11px 20px;border-radius:11px;font-size:14px;border:none;cursor:pointer;}
+  .btn:hover{background:#4338ca;text-decoration:none;}
+  .btn.ghost{background:#fff;color:var(--indigo);border:1px solid var(--line);}
+  .btn.ghost:hover{background:var(--soft);}
+  @media(max-width:680px){.nav-links a:not(.btn){display:none;}}
+  /* hero */
+  .hero{padding:72px 0 56px;background:linear-gradient(180deg,var(--soft),#fff);}
+  .hero h1{font-size:42px;line-height:1.12;color:var(--ink);margin:0 0 18px;letter-spacing:-.5px;}
+  .hero p.lead{font-size:19px;color:var(--body);max-width:680px;margin:0 0 28px;}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .hero .note{font-size:13px;color:var(--muted);margin-top:14px;}
+  .pill{display:inline-block;background:#eef2ff;color:var(--indigo);font-weight:700;font-size:12.5px;padding:6px 13px;border-radius:999px;margin-bottom:20px;letter-spacing:.2px;}
+  @media(max-width:680px){.hero h1{font-size:32px;}}
+  /* sections */
+  section{padding:58px 0;}
+  h2.sec{font-size:28px;color:var(--ink);margin:0 0 8px;text-align:center;}
+  p.sub{font-size:16px;color:var(--muted);text-align:center;max-width:600px;margin:0 auto 38px;}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media(max-width:820px){.grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:540px){.grid{grid-template-columns:1fr;}}
+  .card{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff;}
+  .card .ic{width:42px;height:42px;border-radius:11px;background:var(--soft);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .card h3{margin:0 0 6px;font-size:17px;color:var(--ink);}
+  .card p{margin:0;font-size:14.5px;color:var(--body);}
+  .alt{background:var(--soft);}
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s;}
+  @media(max-width:680px){.steps{grid-template-columns:1fr;}}
+  .step{position:relative;padding:24px;background:#fff;border:1px solid var(--line);border-radius:16px;}
+  .step .n{width:30px;height:30px;border-radius:50%;background:var(--indigo);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px;margin-bottom:12px;}
+  .step h3{margin:0 0 6px;font-size:16px;color:var(--ink);}
+  .step p{margin:0;font-size:14.5px;}
+  /* pricing */
+  .prices{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:760px;margin:0 auto;}
+  @media(max-width:680px){.prices{grid-template-columns:1fr;}}
+  .price{border:1px solid var(--line);border-radius:18px;padding:30px;background:#fff;position:relative;}
+  .price.feature{border:2px solid var(--indigo);box-shadow:0 12px 30px rgba(79,70,229,.12);}
+  .price .tag{position:absolute;top:-12px;right:22px;background:var(--indigo);color:#fff;font-size:11.5px;font-weight:700;padding:4px 11px;border-radius:999px;}
+  .price h3{margin:0 0 4px;font-size:20px;color:var(--ink);}
+  .price .amt{font-size:34px;font-weight:800;color:var(--ink);margin:8px 0;}
+  .price .amt small{font-size:15px;font-weight:600;color:var(--muted);}
+  .price ul{list-style:none;padding:0;margin:16px 0 0;}
+  .price li{padding:6px 0 6px 26px;position:relative;font-size:14.5px;}
+  .price li:before{content:"✓";position:absolute;left:0;color:var(--indigo);font-weight:800;}
+  .price .vat{font-size:12px;color:var(--muted);margin-top:14px;}
+  /* faq */
+  .faq{max-width:760px;margin:0 auto;}
+  details{border:1px solid var(--line);border-radius:12px;padding:0;margin-bottom:12px;background:#fff;overflow:hidden;}
+  summary{cursor:pointer;padding:16px 20px;font-weight:700;color:var(--ink);font-size:15.5px;list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary:after{content:"+";float:right;color:var(--indigo);font-weight:800;}
+  details[open] summary:after{content:"–";}
+  details .a{padding:0 20px 18px;font-size:14.5px;color:var(--body);}
+  /* footer */
+  footer{background:#0f1117;color:#cbd2e0;padding:46px 0 30px;font-size:14px;}
+  footer a{color:#c7cdff;}
+  footer .cols{display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;margin-bottom:28px;}
+  footer .brand{color:#fff;}
+  footer h4{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:.6px;margin:0 0 12px;}
+  footer ul{list-style:none;padding:0;margin:0;}
+  footer li{margin-bottom:8px;}
+  footer .legal{border-top:1px solid #232734;padding-top:20px;color:#8a91a3;font-size:13px;line-height:1.6;}
+  .cta-band{background:linear-gradient(135deg,var(--indigo),var(--indigo2));color:#fff;text-align:center;padding:56px 0;}
+  .cta-band h2{color:#fff;font-size:28px;margin:0 0 10px;}
+  .cta-band p{color:#e3e0ff;margin:0 0 24px;font-size:16px;}
+  .cta-band .btn{background:#fff;color:var(--indigo);}
+  .cta-band .btn:hover{background:#f1f0ff;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      Mailwand
+    </div>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#pricing">Get Mailwand</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="pill">For Gmail · Outlook · Hotmail · Yahoo Mail</span>
+    <h1>Send your repeat emails in one click — and never forget to follow up.</h1>
+    <p class="lead">Mailwand is a browser extension that saves your reusable email templates and signatures, drops them into any message with a click or a <code>/shortcut</code>, and reminds you to follow up. Everything stays on your own device.</p>
+    <div class="cta-row">
+      <a class="btn" href="#pricing">Get Mailwand</a>
+      <a class="btn ghost" href="#how">See how it works</a>
+    </div>
+    <p class="note">No account needed · Free plan available · Works right inside your webmail</p>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <h2 class="sec">Everything you need to write email faster</h2>
+    <p class="sub">Built for people who send the same kinds of messages every day — support, sales, recruiting, freelancing, admin.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ic">📝</div>
+        <h3>Reusable templates</h3>
+        <p>Save the emails you send over and over. Insert them instantly from a floating button, a keyboard shortcut, or by typing <code>/your-shortcut</code> while you write.</p>
+      </div>
+      <div class="card">
+        <div class="ic">✍️</div>
+        <h3>Rich text & signatures</h3>
+        <p>Bold, italics, lists, links, colors and highlights. Keep multiple sign-offs and drop the right signature in with a single click.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🔡</div>
+        <h3>Merge fields</h3>
+        <p>Add <code>{{name}}</code>, <code>{{company}}</code> and more. Mailwand asks you to fill them in before inserting, so every email feels personal.</p>
+      </div>
+      <div class="card">
+        <div class="ic">⏰</div>
+        <h3>Follow-up reminders</h3>
+        <p>Set a nudge for later today, tomorrow, in a few days, or a custom time. Mailwand chimes, shows a notification, and takes you back to the thread.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🗂️</div>
+        <h3>Folders & search</h3>
+        <p>Organize templates into folders so the right reply is always a click away — even when you have dozens of them.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🔒</div>
+        <h3>Private by design</h3>
+        <p>No servers and no tracking. Your templates and reminders are stored locally on your device. Mailwand never sends your emails anywhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="alt">
+  <div class="wrap">
+    <h2 class="sec">Up and running in under a minute</h2>
+    <p class="sub">Install once, then work entirely inside Gmail, Outlook or Yahoo Mail.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Add the extension</h3>
+        <p>Install Mailwand from the Chrome Web Store. There's nothing to sign up for.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>Save your templates</h3>
+        <p>Paste in the emails you send most, give each a shortcut, and add your signatures.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>Write & follow up</h3>
+        <p>Open a compose window, insert a template in one click, and set a reminder if you need to chase a reply.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <h2 class="sec">Simple pricing</h2>
+    <p class="sub">Start free. Upgrade to Pro when you want unlimited templates and reminders.</p>
+    <div class="prices">
+      <div class="price">
+        <h3>Free</h3>
+        <div class="amt">$0</div>
+        <ul>
+          <li>Up to 5 templates</li>
+          <li>Signatures</li>
+          <li>One-click & manual insert</li>
+          <li>Works in Gmail, Outlook & Yahoo</li>
+        </ul>
+      </div>
+      <div class="price feature">
+        <span class="tag">Most popular</span>
+        <h3>Pro</h3>
+        <div class="amt">$4.99 <small>/ month</small></div>
+        <ul>
+          <li>Unlimited templates & signatures</li>
+          <li>Follow-up reminders</li>
+          <li>Merge fields &amp; <code>/shortcuts</code></li>
+          <li>Folders, import &amp; export</li>
+          <li>Or $39/year (save ~35%)</li>
+        </ul>
+        <p class="vat">Prices shown excl. tax. Applicable VAT/sales tax is calculated and shown at checkout. Sold through Dodo Payments, our merchant of record. Cancel anytime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <h2>Stop retyping the same emails.</h2>
+    <p>Add Mailwand and reclaim your inbox time today.</p>
+    <a class="btn" href="#features">Get Mailwand</a>
+  </div>
+</div>
+
+<section id="faq">
+  <div class="wrap">
+    <h2 class="sec">Frequently asked questions</h2>
+    <div class="faq">
+      <details>
+        <summary>Which email services does Mailwand work with?</summary>
+        <div class="a">Gmail, Outlook.com / Hotmail, Outlook on Office 365, and Yahoo Mail — the web versions you open in your browser.</div>
+      </details>
+      <details>
+        <summary>Do you store my emails or templates on a server?</summary>
+        <div class="a">No. Mailwand has no server. Your templates, signatures and reminders are stored locally in your browser. The only time information leaves your device is when you choose to upgrade to Pro, which is handled by our payment processor. See our <a href="privacy-policy.html">Privacy Policy</a>.</div>
+      </details>
+      <details>
+        <summary>How does the Pro upgrade work?</summary>
+        <div class="a">Pro is a subscription billed monthly ($4.99) or yearly ($39). Checkout is handled by Dodo Payments, our merchant of record, who collect and remit any applicable tax. After purchase you receive a license key to activate Pro on your device. You can cancel anytime.</div>
+      </details>
+      <details>
+        <summary>Can I get a refund?</summary>
+        <div class="a">Yes — see our <a href="refund.html">Refund &amp; Cancellation Policy</a>. EU/EEA customers also have statutory withdrawal rights.</div>
+      </details>
+      <details>
+        <summary>Is Mailwand affiliated with Google, Microsoft or Yahoo?</summary>
+        <div class="a">No. Mailwand is an independent tool and is not affiliated with, endorsed by, or sponsored by Google, Microsoft, or Yahoo. Those names are trademarks of their respective owners.</div>
+      </details>
+      <details>
+        <summary>How do I contact support?</summary>
+        <div class="a">Email <a href="mailto:wisplo.support@gmail.com">wisplo.support@gmail.com</a> and we'll get back to you.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div style="max-width:280px;">
+        <div class="brand" style="display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;margin-bottom:10px;">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#c7cdff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Mailwand
+        </div>
+        <p style="margin:0;color:#9aa1b3;">Email templates, signatures and follow-up reminders for Gmail, Outlook and Yahoo Mail.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="refund.html">Refund &amp; Cancellation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:wisplo.support@gmail.com">wisplo.support@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      © <span id="yr">2026</span> Mailwand. Operated by Sanjaya Thilakabandara, trading as Wisplo (Sweden).
+      Payments processed by Dodo Payments as merchant of record.
+      Gmail, Outlook, Hotmail and Yahoo are trademarks of their respective owners; Mailwand is an
+      independent product and is not affiliated with, endorsed by, or sponsored by Google, Microsoft, or Yahoo.
+    </div>
+  </div>
+  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</footer>
+
+</body>
+</html>
