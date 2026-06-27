@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mapwand — Clean up your Google Maps contributions in bulk</title>
+<meta name="description" content="Mapwand bulk-deletes your own Google Maps reviews, photos and edits — safely, with confirmation and human-like timing. Free up to 5 deletions; Pro is a one-time purchase. Private by design." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'%3E%3Cpath d='M12 2C7.6 2 4 5.6 4 10c0 4.4 5.2 10 8 12 2.8-2 8-7.6 8-12 0-4.4-3.6-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z'/%3E%3C/svg%3E" />
+<style>
+  :root{
+    --teal:#0D9488; --teal2:#14B8A6; --teal3:#5EEAD4;
+    --ink:#111827; --body:#374151; --muted:#6b7280;
+    --line:#e5e7eb; --bg:#ffffff; --soft:#f0fdfa; --soft2:#f3f4f6;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--body);line-height:1.65;background:var(--bg);}
+  a{color:var(--teal);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px;}
+  header.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink);font-size:18px;}
+  .brand svg{flex:none;}
+  .brand small{font-weight:600;color:var(--muted);font-size:12px;}
+  .nav-links{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:600;}
+  .nav-links a{color:var(--body);}
+  .btn{display:inline-block;background:var(--teal);color:#fff;font-weight:700;padding:11px 20px;border-radius:11px;font-size:14px;border:none;cursor:pointer;}
+  .btn:hover{background:#0f766e;text-decoration:none;}
+  .btn.ghost{background:#fff;color:var(--teal);border:1px solid var(--line);}
+  .btn.ghost:hover{background:var(--soft);}
+  @media(max-width:680px){.nav-links a:not(.btn):not(.home){display:none;}}
+  .hero{padding:72px 0 56px;background:linear-gradient(180deg,var(--soft),#fff);}
+  .hero h1{font-size:42px;line-height:1.12;color:var(--ink);margin:0 0 18px;letter-spacing:-.5px;}
+  .hero p.lead{font-size:19px;color:var(--body);max-width:680px;margin:0 0 28px;}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .hero .note{font-size:13px;color:var(--muted);margin-top:14px;}
+  .pill{display:inline-block;background:#ccfbf1;color:var(--teal);font-weight:700;font-size:12.5px;padding:6px 13px;border-radius:999px;margin-bottom:20px;letter-spacing:.2px;}
+  @media(max-width:680px){.hero h1{font-size:32px;}}
+  section{padding:58px 0;}
+  h2.sec{font-size:28px;color:var(--ink);margin:0 0 8px;text-align:center;}
+  p.sub{font-size:16px;color:var(--muted);text-align:center;max-width:600px;margin:0 auto 38px;}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media(max-width:820px){.grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:540px){.grid{grid-template-columns:1fr;}}
+  .card{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff;}
+  .card .ic{width:42px;height:42px;border-radius:11px;background:var(--soft);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:20px;}
+  .card h3{margin:0 0 6px;font-size:17px;color:var(--ink);}
+  .card p{margin:0;font-size:14.5px;color:var(--body);}
+  .alt{background:var(--soft);}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media(max-width:680px){.steps{grid-template-columns:1fr;}}
+  .step{position:relative;padding:24px;background:#fff;border:1px solid var(--line);border-radius:16px;}
+  .step .n{width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px;margin-bottom:12px;}
+  .step h3{margin:0 0 6px;font-size:16px;color:var(--ink);}
+  .step p{margin:0;font-size:14.5px;}
+  .prices{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:760px;margin:0 auto;}
+  @media(max-width:680px){.prices{grid-template-columns:1fr;}}
+  .price{border:1px solid var(--line);border-radius:18px;padding:30px;background:#fff;position:relative;}
+  .price.feature{border:2px solid var(--teal);box-shadow:0 12px 30px rgba(13,148,136,.14);}
+  .price .tag{position:absolute;top:-12px;right:22px;background:var(--teal);color:#fff;font-size:11.5px;font-weight:700;padding:4px 11px;border-radius:999px;}
+  .price h3{margin:0 0 4px;font-size:20px;color:var(--ink);}
+  .price .amt{font-size:34px;font-weight:800;color:var(--ink);margin:8px 0;}
+  .price .amt small{font-size:15px;font-weight:600;color:var(--muted);}
+  .price ul{list-style:none;padding:0;margin:16px 0 0;}
+  .price li{padding:6px 0 6px 26px;position:relative;font-size:14.5px;}
+  .price li:before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:800;}
+  .price .vat{font-size:12px;color:var(--muted);margin-top:14px;}
+  .faq{max-width:760px;margin:0 auto;}
+  details{border:1px solid var(--line);border-radius:12px;padding:0;margin-bottom:12px;background:#fff;overflow:hidden;}
+  summary{cursor:pointer;padding:16px 20px;font-weight:700;color:var(--ink);font-size:15.5px;list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary:after{content:"+";float:right;color:var(--teal);font-weight:800;}
+  details[open] summary:after{content:"–";}
+  details .a{padding:0 20px 18px;font-size:14.5px;color:var(--body);}
+  footer{background:#0f1117;color:#cbd2e0;padding:46px 0 30px;font-size:14px;}
+  footer a{color:#a5f3e8;}
+  footer .cols{display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;margin-bottom:28px;}
+  footer .brand{color:#fff;}
+  footer h4{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:.6px;margin:0 0 12px;}
+  footer ul{list-style:none;padding:0;margin:0;}
+  footer li{margin-bottom:8px;}
+  footer .legal{border-top:1px solid #232734;padding-top:20px;color:#8a91a3;font-size:13px;line-height:1.6;}
+  .cta-band{background:linear-gradient(135deg,var(--teal),var(--teal2));color:#fff;text-align:center;padding:56px 0;}
+  .cta-band h2{color:#fff;font-size:28px;margin:0 0 10px;}
+  .cta-band p{color:#ccfbf1;margin:0 0 24px;font-size:16px;}
+  .cta-band .btn{background:#fff;color:var(--teal);}
+  .cta-band .btn:hover{background:#f0fdfa;}
+  .safety{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:0 auto;max-width:720px;}
+  .safety h3{margin:0 0 8px;color:var(--ink);font-size:16px;}
+  .safety p{margin:0;font-size:14px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" style="text-decoration:none;">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="#0d9488" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C7.6 2 4 5.6 4 10c0 4.4 5.2 10 8 12 2.8-2 8-7.6 8-12 0-4.4-3.6-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
+      Mapwand <small>by Wisplo</small>
+    </a>
+    <nav class="nav-links">
+      <a class="home" href="index.html">← Wisplo</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#install">Get Mapwand</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="pill">For Google Maps · Chrome &amp; Edge</span>
+    <h1>Clean up your Google Maps contributions in one click.</h1>
+    <p class="lead">
+      Mapwand is a Chrome extension that bulk-deletes <strong>your own</strong>
+      Google Maps reviews, photos and edits — with confirmation, randomised
+      human-like timing, and a clear pause if Google asks for verification.
+      Everything stays on your device.
+    </p>
+    <div class="cta-row" id="install">
+      <a class="btn" href="#install">Add to Chrome — it's free</a>
+      <a class="btn ghost" href="#how">See how it works</a>
+    </div>
+    <p class="note">No account needed · Free plan available · Works right inside Google Maps</p>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <h2 class="sec">Everything you need to declutter your Google Maps profile</h2>
+    <p class="sub">Built for anyone with years of old reviews, accidental photo uploads, or hundreds of map edits they'd rather not have on their account anymore.</p>
+    <div class="grid">
+
+      <div class="card">
+        <div class="ic">⭐</div>
+        <h3>Bulk-delete reviews</h3>
+        <p>Sweep through your reviews tab one by one — no manual three-dot menus, no scrolling for hours.</p>
+      </div>
+
+      <div class="card">
+        <div class="ic">📷</div>
+        <h3>Delete photos &amp; edits</h3>
+        <p>Same flow for photos and map edits. Switch tabs and Mapwand picks up where it left off.</p>
+      </div>
+
+      <div class="card">
+        <div class="ic">⏱️</div>
+        <h3>Three safe speeds</h3>
+        <p>Careful, Normal and Fast — all with randomised delays and human-like pauses to stay under Google's automation radar.</p>
+      </div>
+
+      <div class="card">
+        <div class="ic">🛡️</div>
+        <h3>CAPTCHA-aware</h3>
+        <p>If Google shows a verification step, Mapwand stops, surfaces the prompt, and only resumes when you're ready.</p>
+      </div>
+
+      <div class="card">
+        <div class="ic">🗂️</div>
+        <h3>Deletion history</h3>
+        <p>Pro keeps a per-item record of what you deleted, when, and at what speed — with one-click jump back to the place on Maps.</p>
+      </div>
+
+      <div class="card">
+        <div class="ic">🔒</div>
+        <h3>Private by design</h3>
+        <p>No accounts, no servers, no analytics. Mapwand only ever touches your own Google Maps tab — nothing leaves your device.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="how" class="alt">
+  <div class="wrap">
+    <h2 class="sec">Up and running in under a minute</h2>
+    <p class="sub">Install once, then everything happens right inside Google Maps.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Add the extension</h3>
+        <p>Install Mapwand from the Chrome Web Store. There's nothing to sign up for.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>Open your contributions</h3>
+        <p>Click Mapwand's icon and pick Reviews, Photos or Edits. It'll auto-open the right page if you're not there yet.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>Confirm &amp; relax</h3>
+        <p>Confirm once. Mapwand deletes one at a time with safe delays. You can pause, stop, or close the popup any time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="safety">
+  <div class="wrap">
+    <h2 class="sec">A note on responsible use</h2>
+    <p class="sub">Mapwand only works on your own Google account, and only deletes contributions you own.</p>
+    <div class="safety">
+      <h3>What Mapwand does &amp; doesn't do</h3>
+      <p>
+        Mapwand uses the same Google Maps web interface you'd use yourself —
+        clicking the same delete buttons, with built-in randomised pauses.
+        It <strong>only deletes contributions on the Google account currently signed
+        into your browser</strong>. It can't access anyone else's reviews. It pauses
+        immediately if Google shows a CAPTCHA. You can stop a run at any
+        moment, and every action is logged locally so you can see exactly
+        what was removed.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="alt">
+  <div class="wrap">
+    <h2 class="sec">Simple pricing</h2>
+    <p class="sub">Start free. Pay once for unlimited — no subscriptions.</p>
+    <div class="prices">
+      <div class="price">
+        <h3>Free</h3>
+        <div class="amt">$0</div>
+        <p style="margin:0;color:var(--muted);">Try it out, no account needed.</p>
+        <ul>
+          <li>Up to 5 deletions in total</li>
+          <li>Reviews, photos &amp; edits</li>
+          <li>Confirmation step before any deletion</li>
+          <li>CAPTCHA-aware safe pause</li>
+        </ul>
+      </div>
+      <div class="price feature">
+        <span class="tag">Most popular</span>
+        <h3>Pro</h3>
+        <div class="amt">$4.99 <small>one-time</small></div>
+        <p style="margin:0;color:var(--muted);">Pay once, use forever.</p>
+        <ul>
+          <li>Unlimited deletions</li>
+          <li>Three speed presets (Careful · Normal · Fast)</li>
+          <li>Per-item deletion history with place names</li>
+          <li>Priority support</li>
+        </ul>
+        <p class="vat">Price excl. tax. Applicable VAT/sales tax shown at checkout. Sold through Dodo Payments, our merchant of record.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <h2>Take back control of your Maps profile.</h2>
+    <p>Add Mapwand and start cleaning up in under a minute.</p>
+    <a class="btn" href="#install">Add to Chrome — it's free</a>
+  </div>
+</div>
+
+<section id="faq">
+  <div class="wrap">
+    <h2 class="sec">Frequently asked questions</h2>
+    <p class="sub">If anything's missing here, just email us.</p>
+    <div class="faq">
+      <details>
+        <summary>Is this allowed? Will my Google account get in trouble?</summary>
+        <div class="a">
+          Mapwand only deletes contributions you own, using the same buttons you'd click yourself. It never logs into your account and never scrapes data. The randomised, human-like pauses and CAPTCHA-aware behavior are designed specifically to stay within reasonable automation behavior. That said, all bulk actions on Google services carry some risk — if you have hundreds of items to remove, splitting them across a few sittings is the safest route.
+        </div>
+      </details>
+      <details>
+        <summary>Does Mapwand store or send my data anywhere?</summary>
+        <div class="a">
+          No. Mapwand has no server. Your deletion history, settings and license key are stored locally in your browser. The only network call we ever make is to Dodo Payments to validate your Pro license — nothing else leaves your device. See our <a href="privacy-policy.html">Privacy Policy</a>.
+        </div>
+      </details>
+      <details>
+        <summary>How does the Pro upgrade work?</summary>
+        <div class="a">
+          Pro is a one-time purchase ($4.99). Checkout is handled by Dodo Payments, our merchant of record, who collect and remit any applicable tax. After purchase you receive a license key by email — paste it into Mapwand once to unlock unlimited deletions, speed control and per-item history.
+        </div>
+      </details>
+      <details>
+        <summary>Can I get a refund?</summary>
+        <div class="a">
+          Yes — see our <a href="refund.html">Refund &amp; Cancellation Policy</a>. EU/EEA customers also have statutory withdrawal rights.
+        </div>
+      </details>
+      <details>
+        <summary>Is Mapwand affiliated with Google?</summary>
+        <div class="a">
+          No. Mapwand is an independent tool by Wisplo, not affiliated with, endorsed by, or sponsored by Google. Google Maps is a trademark of Google LLC.
+        </div>
+      </details>
+      <details>
+        <summary>How do I contact support?</summary>
+        <div class="a">
+          Email <a href="mailto:wisplo.support@gmail.com">wisplo.support@gmail.com</a> and we'll get back to you.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div style="max-width:300px;">
+        <div class="brand" style="display:flex;align-items:center;gap:9px;font-weight:800;font-size:18px;margin-bottom:10px;">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#5eead4" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C7.6 2 4 5.6 4 10c0 4.4 5.2 10 8 12 2.8-2 8-7.6 8-12 0-4.4-3.6-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
+          Mapwand
+        </div>
+        <p style="margin:0;color:#9aa1b3;">Clean up your Google Maps contributions. A <a href="index.html">Wisplo</a> product.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="refund.html">Refund &amp; Cancellation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Wisplo</h4>
+        <ul>
+          <li><a href="index.html">All products</a></li>
+          <li><a href="mailto:wisplo.support@gmail.com">wisplo.support@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      © <span id="yr">2026</span> Mapwand — a product of Wisplo. Operated by Sanjaya Thilakabandara, trading as Wisplo (Sweden).
+      Payments processed by Dodo Payments as merchant of record.
+      Google Maps is a trademark of Google LLC; Mapwand is an independent product and is not affiliated with, endorsed by, or sponsored by Google.
+    </div>
+  </div>
+  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</footer>
+
+</body>
+</html>
