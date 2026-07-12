@@ -24,7 +24,7 @@
 <div class="top"><a href="index.html"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 8l7-5 7 5"/><path d="M5 8v8l7 5 7-5V8"/></svg>Wisplo</a></div>
 
 <h1>Privacy Policy</h1>
-<p class="meta">Effective date: 7 June 2026 · Last updated: 28 June 2026</p>
+<p class="meta">Effective date: 7 June 2026 · Last updated: 12 July 2026</p>
 
 <p>This Privacy Policy explains how the browser extensions published by <strong>Wisplo</strong>
 (“Wisplo”, “we”, “us”) handle information. Wisplo is operated by <strong>Sanjaya Thilakabandara,
@@ -35,6 +35,7 @@ trading as Wisplo</strong>, based in Sweden. You can contact us at
 <ul>
   <li><strong>Mailwand</strong> - email templates, signatures and follow-up reminders for Gmail, Outlook and Yahoo Mail.</li>
   <li><strong>Mapwand</strong> - bulk-delete your own Google Maps reviews.</li>
+  <li><strong>Chatwand</strong> - quick replies and canned responses for LinkedIn, WhatsApp, Slack, X and other chat apps.</li>
 </ul>
 
 <div class="box">
@@ -58,6 +59,15 @@ webmail services (Gmail, Outlook/Hotmail and Yahoo Mail).</p>
 <p>Mapwand is a contributions-management tool. Its single purpose is to let you bulk-delete
 <em>your own</em> Google Maps reviews from your "Your contributions" page, one at a time, with
 confirmation and human-like timing.</p>
+</div>
+
+<div class="product-block">
+<h3>Chatwand</h3>
+<p>Chatwand is a chat-productivity tool. Its single purpose is to let you save and insert
+reusable quick replies and canned responses, with optional fill-in fields, within supported chat,
+social and support apps (LinkedIn, WhatsApp Web, Slack, X/Twitter, Instagram, Messenger, Facebook,
+YouTube, Telegram, Discord, Microsoft Teams, HubSpot, Google Chat, Reddit, Twitch, Tawk.to and
+Chatwoot).</p>
 </div>
 
 <h2>2. Information each extension handles</h2>
@@ -101,6 +111,24 @@ page and clicks the same delete menu you would click yourself. It never reads, c
 any other content from the page.</p>
 </div>
 
+<div class="product-block">
+<h3>Chatwand</h3>
+<ul>
+  <li><strong>Content you create</strong> - the quick replies, canned responses, folder names,
+      shortcuts and fill-in field values you choose to save.</li>
+  <li><strong>Usage counters</strong> - a local count of how many times each quick reply has been
+      used, so you can see which ones you rely on most.</li>
+  <li><strong>License key</strong> - if you've upgraded to Pro, your license key string is stored
+      so the extension knows you're a paying customer.</li>
+  <li><strong>Your settings</strong> - such as your chosen hotkey and folder view.</li>
+</ul>
+<p>Chatwand's in-page component watches the message box you are actively typing in for a
+<code>/shortcut</code> pattern or a palette selection, and inserts your chosen reply text into that
+box. This processing happens locally in your browser and is not recorded or sent anywhere by us.
+Chatwand does not read, copy or transmit the content of messages you receive, or any other page
+content beyond the compose box you are typing into.</p>
+</div>
+
 <h2>3. What we do <em>not</em> do (any product)</h2>
 <ul>
   <li>We do <strong>not</strong> operate any server that receives your data.</li>
@@ -121,6 +149,11 @@ using Chrome's <code>storage.local</code> on your device only.</p>
 <p><strong>Mapwand</strong>: all data (free counter, speed preference, license key, deletion
 history) is stored using Chrome's <code>storage.local</code> on your device only. Nothing is
 synced across devices.</p>
+<p><strong>Chatwand</strong>: your quick replies, folders and settings are stored using Chrome's
+<code>storage.sync</code>, which keeps them on your device and, if you are signed into your browser
+with sync enabled, syncs them across your own browsers via your browser vendor (e.g., Google) under
+their privacy terms. Usage counters and your license key are stored using Chrome's
+<code>storage.local</code> on your device only.</p>
 
 <h2>5. Payments (Pro upgrade)</h2>
 <p>Optional Pro features in our extensions are sold through <strong>Dodo Payments</strong>, which
@@ -170,6 +203,22 @@ checkout is subject to Dodo Payments' privacy policy:</p>
 </ul>
 </div>
 
+<div class="product-block">
+<h3>Chatwand</h3>
+<ul>
+  <li><code>storage</code> - to save your quick replies, folders, usage counters, license key and
+      settings.</li>
+  <li><code>contextMenus</code> - to add the "Save as quick reply" right-click menu item.</li>
+  <li>Content-script access on supported chat/social/support sites (LinkedIn, WhatsApp Web, Slack,
+      X/Twitter, Instagram, Messenger, Facebook, YouTube, Telegram, Discord, Microsoft Teams,
+      HubSpot, Google Chat, Reddit, Twitch, Tawk.to, Chatwoot) - so the extension can add the
+      quick-pick palette and expand <code>/shortcut</code>s inside the message box you are typing
+      in on those sites.</li>
+  <li>Host access to <code>dodopayments.com</code> - to validate your Pro license with our payment
+      processor.</li>
+</ul>
+</div>
+
 <h2>7. Data retention and deletion</h2>
 <p>Your data remains on your device until you delete it. You can delete individual items inside
 the relevant extension's UI, or remove everything by uninstalling the extension, which clears its
@@ -198,9 +247,11 @@ for material changes, note them in each extension's store listing or release not
 
 <hr />
 <p class="meta">Gmail and Google are trademarks of Google LLC. Outlook, Hotmail and Microsoft are
-trademarks of Microsoft Corporation. Yahoo is a trademark of Yahoo Inc. Wisplo's extensions
-(Mailwand, Mapwand) are independent tools and are not affiliated with, endorsed by, or sponsored
-by Google, Microsoft or Yahoo.</p>
+trademarks of Microsoft Corporation. Yahoo is a trademark of Yahoo Inc. LinkedIn, WhatsApp, Slack,
+X, Instagram, Messenger, Facebook, YouTube, Telegram, Discord, Microsoft Teams, HubSpot, Reddit,
+Twitch, Tawk.to and Chatwoot are trademarks of their respective owners. Wisplo's extensions
+(Mailwand, Mapwand, Chatwand) are independent tools and are not affiliated with, endorsed by, or
+sponsored by any of the companies or platforms named on this page.</p>
 
 <a class="back" href="index.html">← Back to Wisplo</a>
 </body>
