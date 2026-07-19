@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PasteSentinel - Catch API Keys &amp; Secrets Before You Paste Them Into ChatGPT, Claude or Gemini</title>
+<meta name="description" content="PasteSentinel warns you before pasting an API key, token or password into ChatGPT, Claude, Gemini and other AI chat sites. Scans entirely on your device. Coming soon to the Chrome Web Store." />
+<meta name="keywords" content="stop pasting API keys into ChatGPT, secret scanner extension, prevent credential leak AI chat, Claude paste warning, API key detector Chrome extension" />
+<link rel="canonical" href="https://wisplo.github.io/pastesentinel.html" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Wisplo" />
+<meta property="og:title" content="PasteSentinel - Catch a leaked secret before it leaves your browser" />
+<meta property="og:description" content="Warns you before pasting an API key, token or password into ChatGPT, Claude, Gemini and other AI chat sites. 100% local. Coming soon." />
+<meta property="og:url" content="https://wisplo.github.io/pastesentinel.html" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="PasteSentinel - Catch a leaked secret before it leaves your browser" />
+<meta name="twitter:description" content="Warns you before pasting an API key, token or password into ChatGPT, Claude, Gemini and other AI chat sites." />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239f1239' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6z'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PasteSentinel",
+  "applicationCategory": "BrowserApplication",
+  "operatingSystem": "Chrome",
+  "url": "https://wisplo.github.io/pastesentinel.html",
+  "description": "Warns you before pasting an API key, token or password into ChatGPT, Claude, Gemini and other AI chat sites.",
+  "offers": { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "Wisplo" }
+}
+</script>
+
+<style>
+  body { --accent: var(--pastesentinel); --accent-soft: var(--pastesentinel-soft); }
+  .hero { padding: 60px 0 52px; }
+  .hero h1 { font-size: 44px; line-height: 1.14; margin: 0 0 18px; max-width: 660px; }
+  .hero p.lead { font-size: 18.5px; max-width: 640px; margin: 0 0 28px; }
+  @media (max-width: 640px) { .hero h1 { font-size: 33px; } }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .note { font-size: 13px; color: var(--ink-faint); margin-top: 16px; }
+  .pill { display: inline-block; font-family: var(--font-mono); font-size: 12px; color: var(--accent); background: var(--accent-soft); padding: 6px 13px; border-radius: 999px; margin-bottom: 22px; letter-spacing: 0.02em; }
+  .soon-badge { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent); padding: 10px 18px; border-radius: 10px; }
+  .soon-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .prices--single { grid-template-columns: 1fr; max-width: 380px; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="1.6" fill="currentColor" stroke="none"/><line x1="12" y1="8" x2="12" y2="21"/><line x1="8.7" y1="12" x2="15.3" y2="12"/><line x1="9.3" y1="16.5" x2="14.7" y2="16.5"/></svg>
+      PasteSentinel <small>by Wisplo</small>
+    </a>
+    <nav class="nav-links">
+      <a class="nav-home" href="index.html">&larr; Wisplo</a>
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <span class="badge" style="color:var(--pastesentinel); border-color:var(--pastesentinel); background:var(--pastesentinel-soft);">Coming soon</span>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="pill">For ChatGPT &middot; Claude &middot; Gemini &middot; Perplexity &middot; Copilot &middot; Mistral &middot; Poe &middot; DeepSeek</span>
+    <h1>Catch a leaked API key before it ever leaves your browser.</h1>
+    <p class="lead"><span class="mark mark--pastesentinel">PasteSentinel</span> is a browser extension that watches what you paste into ChatGPT, Claude, Gemini and other AI chat tools, and warns you the instant it looks like an API key, token or password. Cancel it, or send it anyway - your call, every time.</p>
+    <div class="cta-row">
+      <span class="soon-badge"><span class="dot"></span>Coming soon to the Chrome Web Store</span>
+      <a class="btn ghost" href="#how">See how it works</a>
+    </div>
+    <p class="note">No account needed &middot; Free &middot; Runs entirely on your device, nothing is ever sent anywhere</p>
+  </div>
+</section>
+
+<div class="tick-rule"></div>
+
+<section id="features">
+  <div class="wrap">
+    <h2 class="sec">Built to catch what you'd miss scanning by eye</h2>
+    <p class="sub">A config file, a terminal log, a .env snippet - it's easy to paste the whole thing without noticing the key sitting inside it.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ic">&#9889;</div>
+        <h3>Scans the instant you paste</h3>
+        <p>PasteSentinel checks your paste before it lands in the chat box, not after you've already hit send.</p>
+      </div>
+      <div class="card">
+        <div class="ic">&#128273;</div>
+        <h3>Recognizes real formats</h3>
+        <p>AWS, GitHub, Slack, Stripe, OpenAI-style, Anthropic, Google, Twilio, SendGrid, npm, GitLab, Discord and dozens more - not just a generic "looks random" guess.</p>
+      </div>
+      <div class="card">
+        <div class="ic">&#128220;</div>
+        <h3>Catches key files too</h3>
+        <p>RSA, EC, OpenSSH, DSA and PKCS#8 (.p8) private keys, encrypted PEM blocks and PGP private keys. Your SSH <code>.pub</code> file is left alone - that one's meant to be shared.</p>
+      </div>
+      <div class="card">
+        <div class="ic">&#127919;</div>
+        <h3>Also flags the unlabeled ones</h3>
+        <p>No recognizable prefix, still looks like a real secret or a strong password? A local entropy check catches those too, without ever needing to know what your secrets look like.</p>
+      </div>
+      <div class="card">
+        <div class="ic">&#9997;&#65039;</div>
+        <h3>Teach it your exceptions</h3>
+        <p>Using a placeholder or test key on purpose? Add it to your ignore list once, and PasteSentinel stops flagging it.</p>
+      </div>
+      <div class="card">
+        <div class="ic">&#128274;</div>
+        <h3>100% local, always</h3>
+        <p>No servers, no account, no analytics. The text you paste is scanned in memory and discarded immediately, even the secret itself if one is found.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="alt">
+  <div class="wrap">
+    <h2 class="sec">Nothing to set up, nothing to remember</h2>
+    <p class="sub">It works the moment it's installed, right inside the chat box you already use.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Paste like you always do</h3>
+        <p>Drop a config file, a terminal log, or a .env snippet into ChatGPT, Claude, Gemini or another supported AI chat box.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>PasteSentinel checks it instantly</h3>
+        <p>Entirely on your device, in the moment you paste. Nothing is sent anywhere, even if it finds a secret.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>You decide</h3>
+        <p>Cancel the paste, or send it anyway. PasteSentinel never blocks anything silently without asking first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="platforms">
+  <div class="wrap">
+    <h2 class="sec">Watches every major AI chat</h2>
+    <p class="sub">One extension, everywhere you paste.</p>
+    <div class="chips">
+      <span>ChatGPT</span><span>Claude</span><span>Gemini</span><span>Perplexity</span>
+      <span>Microsoft Copilot</span><span>Mistral Le Chat</span><span>Poe</span><span>DeepSeek</span>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="alt">
+  <div class="wrap">
+    <h2 class="sec">Free, with no catch</h2>
+    <p class="sub">PasteSentinel has no paid tier, no account, and no license to manage.</p>
+    <div class="prices prices--single">
+      <div class="price feature">
+        <span class="tag">Always free</span>
+        <h3>PasteSentinel</h3>
+        <div class="amt">$0</div>
+        <ul>
+          <li>Unlimited paste scanning</li>
+          <li>All 8 supported AI chat sites</li>
+          <li>Full named-pattern &amp; entropy detection</li>
+          <li>Custom ignore list</li>
+        </ul>
+        <p class="vat">No payment integration of any kind. If that ever changes, this page and our <a href="privacy-policy.html">Privacy Policy</a> will say so first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <h2>Launching soon.</h2>
+    <p>PasteSentinel is finishing up Chrome Web Store review. Check back here, or email us to be notified the day it's live.</p>
+    <a class="btn" href="mailto:wisplo.support@gmail.com?subject=Notify%20me%20when%20PasteSentinel%20launches">Get notified</a>
+  </div>
+</div>
+
+<section id="faq">
+  <div class="wrap">
+    <h2 class="sec">Frequently asked questions</h2>
+    <div class="faq">
+      <details>
+        <summary>Which AI chat sites does PasteSentinel work with?</summary>
+        <div class="a">ChatGPT (chatgpt.com, chat.openai.com), Claude (claude.ai), Gemini (gemini.google.com), Perplexity (perplexity.ai), Microsoft Copilot (copilot.microsoft.com), Mistral's Le Chat (chat.mistral.ai), Poe (poe.com) and DeepSeek (chat.deepseek.com) - the web versions you open in your browser.</div>
+      </details>
+      <details>
+        <summary>Does PasteSentinel store or send my data anywhere?</summary>
+        <div class="a">No. PasteSentinel has no server. The text you paste is scanned entirely in memory, in your browser, and discarded the instant the check completes - it's never written to storage or sent anywhere, even when a secret is found. Only your on/off setting, your own ignore-list entries, and a simple detection counter are saved, locally on your device. See our <a href="privacy-policy.html">Privacy Policy</a>.</div>
+      </details>
+      <details>
+        <summary>What does it actually detect?</summary>
+        <div class="a">Dozens of named formats - AWS, GitHub, Slack, Stripe, OpenAI-style, Anthropic, Google, Twilio, SendGrid, npm, GitLab, Discord and more - plus private key files (RSA, EC, OpenSSH, DSA, PKCS#8, encrypted PEM, PGP) and database connection strings with embedded passwords. Anything that doesn't match a known format but still looks like a strong, random secret is caught by a local entropy check. Your SSH <code>.pub</code> file is deliberately left alone, since that's meant to be shared.</div>
+      </details>
+      <details>
+        <summary>Will it flag things that aren't secrets?</summary>
+        <div class="a">Rarely, but any scanner like this can have false positives on unusual-looking text. If PasteSentinel flags something you use on purpose, like a placeholder or test key, add it to your ignore list once from the extension's settings and it won't be flagged again.</div>
+      </details>
+      <details>
+        <summary>When is it launching, and how much will it cost?</summary>
+        <div class="a">PasteSentinel is currently in Chrome Web Store review. It will be free with no paid tier at launch. Email us and we'll let you know the day it's live.</div>
+      </details>
+      <details>
+        <summary>Is PasteSentinel affiliated with OpenAI, Anthropic, Google or the other platforms?</summary>
+        <div class="a">No. PasteSentinel is an independent tool and is not affiliated with, endorsed by, or sponsored by OpenAI, Anthropic, Google, Microsoft, Mistral AI, Quora (Poe), Perplexity AI, DeepSeek, or any other platform named on this page.</div>
+      </details>
+      <details>
+        <summary>How do I contact support?</summary>
+        <div class="a">Email <a href="mailto:wisplo.support@gmail.com">wisplo.support@gmail.com</a> and we'll get back to you.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div style="max-width:280px;">
+        <div class="brand" style="display:flex; align-items:center; gap:9px; margin-bottom:12px;">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--pastesentinel)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          PasteSentinel
+        </div>
+        <p style="margin:0; color:#a8a297;">Catches API keys and secrets before you paste them into AI chat. A <a href="index.html">Wisplo</a> product.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Wisplo</h4>
+        <ul>
+          <li><a href="index.html">All products</a></li>
+          <li><a href="mailto:wisplo.support@gmail.com">wisplo.support@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      &copy; <span id="yr">2026</span> PasteSentinel, a product of Wisplo. Operated by Sanjaya Thilakabandara, trading as Wisplo (Sweden). ChatGPT and OpenAI are trademarks of OpenAI; Claude and Anthropic are trademarks of Anthropic; Gemini is a trademark of Google LLC; Copilot is a trademark of Microsoft Corporation; Mistral and Le Chat are trademarks of Mistral AI; Poe is a trademark of Quora, Inc.; Perplexity is a trademark of Perplexity AI, Inc.; DeepSeek is a trademark of its respective owner. PasteSentinel is an independent product and is not affiliated with, endorsed by, or sponsored by any of them.
+    </div>
+  </div>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</footer>
+
+</body>
+</html>

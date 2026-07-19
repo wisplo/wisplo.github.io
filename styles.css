@@ -27,6 +27,8 @@
   --mapwand-soft: #ecfdf9;
   --chatwand: #ea580c;
   --chatwand-soft: #fff3ea;
+  --pastesentinel: #9f1239;
+  --pastesentinel-soft: #fdf2f4;
 
   --radius-sm: 8px;
   --radius-md: 14px;
@@ -151,6 +153,7 @@ code, .mono {
 .mark--mailwand { --mark-color: var(--mailwand); }
 .mark--mapwand { --mark-color: var(--mapwand); }
 .mark--chatwand { --mark-color: var(--chatwand); }
+.mark--pastesentinel { --mark-color: var(--pastesentinel); }
 
 /* -------------------------------------------------------------------------
    Tick-rule - a ruler/gauge divider used site-wide instead of a plain
@@ -525,6 +528,17 @@ details .a {
   font-size: 16px;
 }
 
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  color: var(--ink-faint);
+}
+
 /* Platform chips */
 .chips {
   display: flex;
@@ -676,6 +690,31 @@ footer.site .legal {
 .legal-body .product-block--mailwand { border-left-color: var(--mailwand); }
 .legal-body .product-block--mapwand { border-left-color: var(--mapwand); }
 .legal-body .product-block--chatwand { border-left-color: var(--chatwand); }
+.legal-body .product-block--pastesentinel { border-left-color: var(--pastesentinel); }
+
+/* Per-product accordion used on the privacy page's consolidated details section */
+.legal-body details.product-detail summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.legal-body details.product-detail summary::after {
+  color: var(--detail-accent, var(--studio-brass));
+}
+.legal-body details.product-detail[open] {
+  border-color: var(--detail-accent, var(--hairline));
+}
+.legal-body details.product-detail .a h4 {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  margin: 18px 0 8px;
+}
+.legal-body details.product-detail .a h4:first-child {
+  margin-top: 4px;
+}
 .legal-body hr {
   border: none;
   border-top: 1px solid var(--hairline);

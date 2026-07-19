@@ -115,6 +115,10 @@
     background: #2f9e5c;
     box-shadow: 0 0 0 3px rgba(47, 158, 92, 0.18);
   }
+  .roster-status--pending .dot {
+    background: var(--studio-brass);
+    box-shadow: 0 0 0 3px rgba(156, 122, 68, 0.18);
+  }
   .products {
     display: grid;
     grid-template-columns: 1fr;
@@ -168,16 +172,6 @@
   }
   .product .links a {
     text-decoration: none;
-  }
-  .badge {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: var(--paper);
-    border: 1px solid var(--hairline);
-    color: var(--ink-faint);
   }
   .values {
     display: grid;
@@ -276,6 +270,13 @@
         </div>
         <span class="roster-status"><span class="dot"></span>Live</span>
       </a>
+      <a class="roster-item" href="pastesentinel.html">
+        <div>
+          <h3><span class="mark mark--pastesentinel">PasteSentinel</span></h3>
+          <p>Catches API keys before you paste them into AI chat</p>
+        </div>
+        <span class="roster-status roster-status--pending"><span class="dot"></span>Coming soon</span>
+      </a>
     </div>
   </div>
 </section>
@@ -284,7 +285,7 @@
   <div class="wrap">
     <span class="eyebrow" style="display:flex; justify-content:center;">01 &middot; Our products</span>
     <h2 class="sec">One tool at a time, done well</h2>
-    <p class="sub">Three extensions, one habit of mind: small, private, and out of your way.</p>
+    <p class="sub">Four extensions, one habit of mind: small, private, and out of your way.</p>
 
     <div class="products">
       <div class="product">
@@ -330,6 +331,21 @@
             <a href="https://chromewebstore.google.com/detail/chatwand-quick-replies-ca/enoifickfoncepigjicllgffecklnncp" target="_blank" rel="noopener" style="color:var(--chatwand);">Add to Chrome &rarr;</a>
             <a href="chatwand.html" style="color:var(--ink);">Learn more</a>
             <span class="badge">Available now</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="logo" style="background:var(--pastesentinel-soft);">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--pastesentinel)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <div>
+          <h3><span class="mark mark--pastesentinel">PasteSentinel</span></h3>
+          <p class="tagline" style="color:var(--pastesentinel);">Catches API keys &amp; secrets before you paste them into AI chat</p>
+          <p class="desc">Warns you before pasting an API key, token or password into ChatGPT, Claude, Gemini and other AI chat sites. Scans entirely on your device, nothing is ever sent anywhere.</p>
+          <div class="links">
+            <a href="pastesentinel.html" style="color:var(--pastesentinel);">Learn more &rarr;</a>
+            <span class="badge" style="color:var(--pastesentinel); border-color:var(--pastesentinel); background:var(--pastesentinel-soft);">Coming soon</span>
           </div>
         </div>
       </div>
@@ -392,6 +408,7 @@
           <li><a href="mailwand.html">Mailwand</a></li>
           <li><a href="mapwand.html">Mapwand</a></li>
           <li><a href="chatwand.html">Chatwand</a></li>
+          <li><a href="pastesentinel.html">PasteSentinel</a></li>
         </ul>
       </div>
       <div>
@@ -410,7 +427,7 @@
       </div>
     </div>
     <div class="legal">
-      &copy; <span id="yr">2026</span> Wisplo, operated by Sanjaya Thilakabandara (Sweden). Mailwand, Mapwand and Chatwand are independent products and are not affiliated with, endorsed by, or sponsored by Google, Microsoft, Yahoo, LinkedIn, Meta, Slack, X Corp, Discord, or any other platform they work with.
+      &copy; <span id="yr">2026</span> Wisplo, operated by Sanjaya Thilakabandara (Sweden). Mailwand, Mapwand, Chatwand and PasteSentinel are independent products and are not affiliated with, endorsed by, or sponsored by Google, Microsoft, Yahoo, LinkedIn, Meta, Slack, X Corp, Discord, OpenAI, Anthropic, Mistral AI, Quora, Perplexity AI, DeepSeek, or any other platform they work with.
     </div>
   </div>
 </footer>

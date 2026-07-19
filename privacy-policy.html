@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Privacy Policy - Wisplo (Mailwand, Mapwand, Chatwand)</title>
-<meta name="description" content="How Wisplo's Chrome extensions - Mailwand, Mapwand and Chatwand - handle your data. Everything is stored locally on your device; we run no servers that collect your content." />
+<title>Privacy Policy - Wisplo (Mailwand, Mapwand, Chatwand, PasteSentinel)</title>
+<meta name="description" content="How Wisplo's Chrome extensions - Mailwand, Mapwand, Chatwand and PasteSentinel - handle your data. Everything is stored locally on your device; we run no servers that collect your content." />
 <meta name="robots" content="noindex, follow" />
 <link rel="canonical" href="https://wisplo.github.io/privacy-policy.html" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231c1b1a' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='5' r='1.6' fill='%231c1b1a' stroke='none'/%3E%3Cline x1='12' y1='8' x2='12' y2='21'/%3E%3Cline x1='8.7' y1='12' x2='15.3' y2='12'/%3E%3Cline x1='9.3' y1='16.5' x2='14.7' y2='16.5'/%3E%3C/svg%3E" />
@@ -23,22 +23,19 @@
 <div class="legal-layout">
   <nav class="legal-toc">
     <div class="tick-rule tick-rule--tight"></div>
-    <a href="#purpose">1. Single purpose</a>
-    <a href="#data">2. Information each extension handles</a>
-    <a href="#not-do">3. What we don't do</a>
-    <a href="#storage">4. Where your data is stored</a>
-    <a href="#payments">5. Payments (Pro upgrade)</a>
-    <a href="#permissions">6. Permissions and why</a>
-    <a href="#retention">7. Retention &amp; deletion</a>
-    <a href="#rights">8. Your rights</a>
-    <a href="#children">9. Children</a>
-    <a href="#changes">10. Changes</a>
-    <a href="#contact">11. Contact</a>
+    <a href="#products">1. Product-by-product details</a>
+    <a href="#not-do">2. What we don't do</a>
+    <a href="#payments">3. Payments (Pro upgrades)</a>
+    <a href="#retention">4. Retention &amp; deletion</a>
+    <a href="#rights">5. Your rights</a>
+    <a href="#children">6. Children</a>
+    <a href="#changes">7. Changes</a>
+    <a href="#contact">8. Contact</a>
   </nav>
 
   <div class="legal-body">
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective date: 7 June 2026 &middot; Last updated: 12 July 2026</p>
+    <p class="meta">Effective date: 7 June 2026 &middot; Last updated: 20 July 2026</p>
 
     <p>This Privacy Policy explains how the browser extensions published by <strong>Wisplo</strong> ("Wisplo", "we", "us") handle information. Wisplo is operated by <strong>Sanjaya Thilakabandara, trading as Wisplo</strong>, based in Sweden. You can contact us at <strong>wisplo.support@gmail.com</strong>.</p>
 
@@ -47,137 +44,162 @@
       <li><span class="mark mark--mailwand">Mailwand</span> - email templates, signatures and follow-up reminders for Gmail, Outlook and Yahoo Mail.</li>
       <li><span class="mark mark--mapwand">Mapwand</span> - bulk-delete your own Google Maps reviews.</li>
       <li><span class="mark mark--chatwand">Chatwand</span> - quick replies and canned responses for LinkedIn, WhatsApp, Slack, X and other chat apps.</li>
+      <li><span class="mark mark--pastesentinel">PasteSentinel</span> - warns you before pasting an API key, token or other secret into ChatGPT, Claude, Gemini and other AI chat sites.</li>
     </ul>
 
     <div class="box">
       <strong>The short version:</strong> every Wisplo extension stores its data <em>locally on your device</em>. We do not run servers that collect your content, we do not transmit your data to us, and we do not sell or share your data. The only time information leaves your device is if you choose to upgrade to a paid tier, which is handled by our payment processor.
     </div>
 
-    <h2 id="purpose">1. Single purpose</h2>
+    <h2 id="products">1. Product-by-product details</h2>
+    <p>Each Wisplo extension handles its information <strong>entirely on your own device</strong>. Expand a product below for exactly what it stores, where, and which permissions it uses and why.</p>
 
-    <div class="product-block product-block--mailwand">
-      <h3>Mailwand</h3>
-      <p>Mailwand is an email-productivity tool. Its single purpose is to let you save and insert reusable email templates and signatures, and to set follow-up reminders, within supported webmail services (Gmail, Outlook/Hotmail and Yahoo Mail).</p>
-    </div>
+    <details class="product-detail" style="--detail-accent: var(--mailwand);">
+      <summary><span class="mark mark--mailwand">Mailwand</span></summary>
+      <div class="a">
+        <h4>Single purpose</h4>
+        <p>Mailwand is an email-productivity tool. Its single purpose is to let you save and insert reusable email templates and signatures, and to set follow-up reminders, within supported webmail services (Gmail, Outlook/Hotmail and Yahoo Mail).</p>
 
-    <div class="product-block product-block--mapwand">
-      <h3>Mapwand</h3>
-      <p>Mapwand is a contributions-management tool. Its single purpose is to let you bulk-delete <em>your own</em> Google Maps reviews from your "Your contributions" page, one at a time, with confirmation and human-like timing.</p>
-    </div>
+        <h4>Information handled</h4>
+        <ul>
+          <li><strong>Content you create</strong> - the email templates, signatures, folder names and shortcuts you choose to save.</li>
+          <li><strong>Reminder details</strong> - the note, time and (optionally) the subject line and link of the email you set a follow-up reminder for, plus a short local history of reminders that have fired.</li>
+          <li><strong>Recently viewed email subjects</strong> - to offer them as quick suggestions when you create a reminder, Mailwand keeps a short list (most recent ~20) of subject lines and the page address they came from. Stored locally; never transmitted to us.</li>
+          <li><strong>Your settings</strong> - such as your chosen reminder sound.</li>
+        </ul>
+        <p>Mailwand's in-page component reads the subject field and the open message's subject heading on supported mail sites, and inserts your chosen template text into the message you are composing. This processing happens locally in your browser and is not recorded or sent anywhere by us.</p>
 
-    <div class="product-block product-block--chatwand">
-      <h3>Chatwand</h3>
-      <p>Chatwand is a chat-productivity tool. Its single purpose is to let you save and insert reusable quick replies and canned responses, with optional fill-in fields, within supported chat, social and support apps (LinkedIn, WhatsApp Web, Slack, X/Twitter, Instagram, Messenger, Facebook, YouTube, Telegram, Discord, Microsoft Teams, HubSpot, Google Chat, Reddit, Twitch, Tawk.to and Chatwoot).</p>
-    </div>
+        <h4>Where it's stored</h4>
+        <p>Templates and signatures are stored using Chrome's <code>storage.sync</code>, which keeps them on your device and, if you are signed into your browser with sync enabled, syncs them across your own browsers via your browser vendor (e.g., Google) under their privacy terms. Reminders, recent subjects, the fired-reminder history and settings are stored using Chrome's <code>storage.local</code> on your device only.</p>
 
-    <h2 id="data">2. Information each extension handles</h2>
-    <p>Each Wisplo extension handles its information <strong>entirely on your own device</strong>.</p>
+        <h4>Permissions and why</h4>
+        <ul>
+          <li><code>storage</code> - to save your templates, signatures, reminders and settings.</li>
+          <li><code>alarms</code> - to trigger your follow-up reminders at the time you set.</li>
+          <li><code>notifications</code> - to show a desktop notification when a reminder is due.</li>
+          <li><code>offscreen</code> - to play the reminder chime.</li>
+          <li>Host access to <code>mail.google.com</code>, <code>outlook.live.com</code>, <code>outlook.office.com</code>, <code>outlook.office365.com</code> and <code>mail.yahoo.com</code> - so the extension can add its template tools to your compose window and detect the subject for reminders.</li>
+          <li>Host access to <code>dodopayments.com</code> - to validate your Pro license with our payment processor.</li>
+        </ul>
+      </div>
+    </details>
 
-    <div class="product-block product-block--mailwand">
-      <h3>Mailwand</h3>
-      <ul>
-        <li><strong>Content you create</strong> - the email templates, signatures, folder names and shortcuts you choose to save.</li>
-        <li><strong>Reminder details</strong> - the note, time and (optionally) the subject line and link of the email you set a follow-up reminder for, plus a short local history of reminders that have fired.</li>
-        <li><strong>Recently viewed email subjects</strong> - to offer them as quick suggestions when you create a reminder, Mailwand keeps a short list (most recent ~20) of subject lines and the page address they came from. Stored locally; never transmitted to us.</li>
-        <li><strong>Your settings</strong> - such as your chosen reminder sound.</li>
-      </ul>
-      <p>Mailwand's in-page component reads the subject field and the open message's subject heading on supported mail sites, and inserts your chosen template text into the message you are composing. This processing happens locally in your browser and is not recorded or sent anywhere by us.</p>
-    </div>
+    <details class="product-detail" style="--detail-accent: var(--mapwand);">
+      <summary><span class="mark mark--mapwand">Mapwand</span></summary>
+      <div class="a">
+        <h4>Single purpose</h4>
+        <p>Mapwand is a contributions-management tool. Its single purpose is to let you bulk-delete <em>your own</em> Google Maps reviews from your "Your contributions" page, one at a time, with confirmation and human-like timing.</p>
 
-    <div class="product-block product-block--mapwand">
-      <h3>Mapwand</h3>
-      <ul>
-        <li><strong>Free-tier counter</strong> - a small number that tracks how many free deletions you have used (the free plan allows up to 5 deletions).</li>
-        <li><strong>Your speed preference</strong> - whether you've chosen Careful, Normal or Fast.</li>
-        <li><strong>License key</strong> - if you've upgraded to Pro, your license key string is stored so the extension knows you're a paying customer.</li>
-        <li><strong>Per-item deletion history</strong> - a local record of each review you deleted: the place name shown on the card, the date you deleted it, the speed setting you used, and (when available) a link back to that place on Google Maps. Kept on your device only and capped at the most recent 100 entries.</li>
-      </ul>
-      <p>Mapwand's in-page component runs on <code>www.google.com/maps/*</code> and <code>maps.google.com/*</code> only. It locates the contribution cards on your "Your contributions" page and clicks the same delete menu you would click yourself. It never reads, copies or transmits any other content from the page.</p>
-    </div>
+        <h4>Information handled</h4>
+        <ul>
+          <li><strong>Free-tier counter</strong> - a small number that tracks how many free deletions you have used (the free plan allows up to 5 deletions).</li>
+          <li><strong>Your speed preference</strong> - whether you've chosen Careful, Normal or Fast.</li>
+          <li><strong>License key</strong> - if you've upgraded to Pro, your license key string is stored so the extension knows you're a paying customer.</li>
+          <li><strong>Per-item deletion history</strong> - a local record of each review you deleted: the place name shown on the card, the date you deleted it, the speed setting you used, and (when available) a link back to that place on Google Maps. Kept on your device only and capped at the most recent 100 entries.</li>
+        </ul>
+        <p>Mapwand's in-page component runs on <code>www.google.com/maps/*</code> and <code>maps.google.com/*</code> only. It locates the contribution cards on your "Your contributions" page and clicks the same delete menu you would click yourself. It never reads, copies or transmits any other content from the page.</p>
 
-    <div class="product-block product-block--chatwand">
-      <h3>Chatwand</h3>
-      <ul>
-        <li><strong>Content you create</strong> - the quick replies, canned responses, folder names, shortcuts and fill-in field values you choose to save.</li>
-        <li><strong>Usage counters</strong> - a local count of how many times each quick reply has been used, so you can see which ones you rely on most.</li>
-        <li><strong>License key</strong> - if you've upgraded to Pro, your license key string is stored so the extension knows you're a paying customer.</li>
-        <li><strong>Your settings</strong> - such as your chosen hotkey and folder view.</li>
-      </ul>
-      <p>Chatwand's in-page component watches the message box you are actively typing in for a <code>/shortcut</code> pattern or a palette selection, and inserts your chosen reply text into that box. This processing happens locally in your browser and is not recorded or sent anywhere by us. Chatwand does not read, copy or transmit the content of messages you receive, or any other page content beyond the compose box you are typing into.</p>
-    </div>
+        <h4>Where it's stored</h4>
+        <p>All data (free counter, speed preference, license key, deletion history) is stored using Chrome's <code>storage.local</code> on your device only. Nothing is synced across devices.</p>
 
-    <h2 id="not-do">3. What we do <em>not</em> do (any product)</h2>
+        <h4>Permissions and why</h4>
+        <ul>
+          <li><code>storage</code> - to save your free-tier counter, speed preference, license key and per-item deletion history.</li>
+          <li><code>scripting</code> - required by Chrome Manifest V3 for the content script that performs deletions on your behalf.</li>
+          <li><code>activeTab</code> - so the extension only acts on the Google Maps tab you have open when you click the popup.</li>
+          <li>Host access to <code>www.google.com/maps/*</code> and <code>maps.google.com/*</code> - so the deletion content script can run on your Google Maps "Your contributions" page.</li>
+          <li>Host access to <code>live.dodopayments.com</code> and <code>checkout.dodopayments.com</code> - to open the Pro checkout page and validate your license key against Dodo's public licensing endpoint.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="product-detail" style="--detail-accent: var(--chatwand);">
+      <summary><span class="mark mark--chatwand">Chatwand</span></summary>
+      <div class="a">
+        <h4>Single purpose</h4>
+        <p>Chatwand is a chat-productivity tool. Its single purpose is to let you save and insert reusable quick replies and canned responses, with optional fill-in fields, within supported chat, social and support apps (LinkedIn, WhatsApp Web, Slack, X/Twitter, Instagram, Messenger, Facebook, YouTube, Telegram, Discord, Microsoft Teams, HubSpot, Google Chat, Reddit, Twitch, Tawk.to and Chatwoot).</p>
+
+        <h4>Information handled</h4>
+        <ul>
+          <li><strong>Content you create</strong> - the quick replies, canned responses, folder names, shortcuts and fill-in field values you choose to save.</li>
+          <li><strong>Usage counters</strong> - a local count of how many times each quick reply has been used, so you can see which ones you rely on most.</li>
+          <li><strong>License key</strong> - if you've upgraded to Pro, your license key string is stored so the extension knows you're a paying customer.</li>
+          <li><strong>Your settings</strong> - such as your chosen hotkey and folder view.</li>
+        </ul>
+        <p>Chatwand's in-page component watches the message box you are actively typing in for a <code>/shortcut</code> pattern or a palette selection, and inserts your chosen reply text into that box. This processing happens locally in your browser and is not recorded or sent anywhere by us. Chatwand does not read, copy or transmit the content of messages you receive, or any other page content beyond the compose box you are typing into.</p>
+
+        <h4>Where it's stored</h4>
+        <p>Quick replies, folders and settings are stored using Chrome's <code>storage.sync</code>, which keeps them on your device and, if you are signed into your browser with sync enabled, syncs them across your own browsers via your browser vendor (e.g., Google) under their privacy terms. Usage counters and your license key are stored using Chrome's <code>storage.local</code> on your device only.</p>
+
+        <h4>Permissions and why</h4>
+        <ul>
+          <li><code>storage</code> - to save your quick replies, folders, usage counters, license key and settings.</li>
+          <li><code>contextMenus</code> - to add the "Save as quick reply" right-click menu item.</li>
+          <li>Content-script access on supported chat/social/support sites (LinkedIn, WhatsApp Web, Slack, X/Twitter, Instagram, Messenger, Facebook, YouTube, Telegram, Discord, Microsoft Teams, HubSpot, Google Chat, Reddit, Twitch, Tawk.to, Chatwoot) - so the extension can add the quick-pick palette and expand <code>/shortcut</code>s inside the message box you are typing in on those sites.</li>
+          <li>Host access to <code>dodopayments.com</code> - to validate your Pro license with our payment processor.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="product-detail" style="--detail-accent: var(--pastesentinel);">
+      <summary><span class="mark mark--pastesentinel">PasteSentinel</span></summary>
+      <div class="a">
+        <h4>Single purpose</h4>
+        <p>PasteSentinel is a security tool. Its single purpose is to scan text you paste into a supported AI chat site (ChatGPT, Claude, Gemini, Perplexity, Microsoft Copilot, Mistral's Le Chat, Poe and DeepSeek) for patterns that look like an API key, access token, password or other secret, and warn you before the paste completes so you can cancel it or send it anyway.</p>
+
+        <h4>Information handled</h4>
+        <ul>
+          <li><strong>Protection setting</strong> - whether scanning is switched on or off.</li>
+          <li><strong>Ignore-list entries</strong> - exact text snippets you've chosen to stop flagging, such as a placeholder or test key you use on purpose. You type these in yourself; PasteSentinel never stores the actual secrets it detects.</li>
+          <li><strong>Detection counters</strong> - a simple count of how many pastes were flagged today and in total, shown to you in the popup.</li>
+        </ul>
+        <p><strong>The text you paste is never stored.</strong> PasteSentinel scans it entirely in memory, in your browser, at the instant you paste. It is never written to storage, never transmitted anywhere, and is discarded immediately once the check completes - including the secret itself, if one is found.</p>
+
+        <h4>Where it's stored</h4>
+        <p>Your protection setting, ignore-list entries and detection counters are stored using Chrome's <code>storage.local</code> on your device only. PasteSentinel does not use Chrome's <code>storage.sync</code>, so nothing is synced across your devices or through your Google account.</p>
+
+        <h4>Permissions and why</h4>
+        <ul>
+          <li><code>storage</code> - to save your protection setting, ignore-list entries and detection counters.</li>
+          <li>Content-script access on <code>chatgpt.com</code>, <code>chat.openai.com</code>, <code>claude.ai</code>, <code>gemini.google.com</code>, <code>perplexity.ai</code>, <code>www.perplexity.ai</code>, <code>copilot.microsoft.com</code>, <code>chat.mistral.ai</code>, <code>poe.com</code> and <code>chat.deepseek.com</code> - so the extension can watch for a paste into the chat box on those sites and show its warning dialog. No other sites are touched.</li>
+        </ul>
+        <p>PasteSentinel requests no <code>host_permissions</code> and makes no network requests of any kind - there is nothing for it to call.</p>
+      </div>
+    </details>
+
+    <h2 id="not-do">2. What we do <em>not</em> do (any product)</h2>
     <ul>
       <li>We do <strong>not</strong> operate any server that receives your data.</li>
-      <li>We do <strong>not</strong> read, collect, store or transmit the body of your emails, your reviews, or any other personal content to us.</li>
+      <li>We do <strong>not</strong> read, collect, store or transmit the body of your emails, your reviews, the text you paste into an AI chat, or any other personal content to us.</li>
       <li>We do <strong>not</strong> sell, rent or share your information with third parties.</li>
       <li>We do <strong>not</strong> use your data for advertising, profiling, creditworthiness or any purpose unrelated to the extension's single purpose.</li>
       <li>We do <strong>not</strong> include analytics or tracking inside any of our extensions.</li>
     </ul>
 
-    <h2 id="storage">4. Where your data is stored</h2>
-    <p><strong>Mailwand</strong>: your templates and signatures are stored using Chrome's <code>storage.sync</code>, which keeps them on your device and, if you are signed into your browser with sync enabled, syncs them across your own browsers via your browser vendor (e.g., Google) under their privacy terms. Reminders, recent subjects, the fired-reminder history and settings are stored using Chrome's <code>storage.local</code> on your device only.</p>
-    <p><strong>Mapwand</strong>: all data (free counter, speed preference, license key, deletion history) is stored using Chrome's <code>storage.local</code> on your device only. Nothing is synced across devices.</p>
-    <p><strong>Chatwand</strong>: your quick replies, folders and settings are stored using Chrome's <code>storage.sync</code>, which keeps them on your device and, if you are signed into your browser with sync enabled, syncs them across your own browsers via your browser vendor (e.g., Google) under their privacy terms. Usage counters and your license key are stored using Chrome's <code>storage.local</code> on your device only.</p>
-
-    <h2 id="payments">5. Payments (Pro upgrade)</h2>
-    <p>Optional Pro features in our extensions are sold through <strong>Dodo Payments</strong>, which acts as the <strong>merchant of record</strong> for the transaction and processes your payment. If you choose to upgrade, Dodo Payments collects the information needed to process your payment and to comply with tax and legal obligations - typically your <strong>email address</strong>, <strong>billing/country information</strong> and <strong>payment-card details</strong>. <strong>We never receive or store your card details.</strong> We receive only confirmation of your paid status and a license key so the extension can unlock Pro features for you. Your use of checkout is subject to Dodo Payments' privacy policy:</p>
+    <h2 id="payments">3. Payments (Pro upgrades)</h2>
+    <p>Optional Pro features in Mailwand, Mapwand and Chatwand are sold through <strong>Dodo Payments</strong>, which acts as the <strong>merchant of record</strong> for the transaction and processes your payment. If you choose to upgrade, Dodo Payments collects the information needed to process your payment and to comply with tax and legal obligations - typically your <strong>email address</strong>, <strong>billing/country information</strong> and <strong>payment-card details</strong>. <strong>We never receive or store your card details.</strong> We receive only confirmation of your paid status and a license key so the extension can unlock Pro features for you. Your use of checkout is subject to Dodo Payments' privacy policy:</p>
     <ul>
       <li>Dodo Payments Privacy Policy - <a href="https://dodopayments.com/privacy-policy">https://dodopayments.com/privacy-policy</a></li>
     </ul>
+    <p><strong>PasteSentinel</strong> is currently free, with no paid tier and no payment integration of any kind. If that changes in the future, this policy will be updated first.</p>
 
-    <h2 id="permissions">6. Permissions and why they are used</h2>
-
-    <div class="product-block product-block--mailwand">
-      <h3>Mailwand</h3>
-      <ul>
-        <li><code>storage</code> - to save your templates, signatures, reminders and settings.</li>
-        <li><code>alarms</code> - to trigger your follow-up reminders at the time you set.</li>
-        <li><code>notifications</code> - to show a desktop notification when a reminder is due.</li>
-        <li><code>offscreen</code> - to play the reminder chime.</li>
-        <li>Host access to <code>mail.google.com</code>, <code>outlook.live.com</code>, <code>outlook.office.com</code>, <code>outlook.office365.com</code> and <code>mail.yahoo.com</code> - so the extension can add its template tools to your compose window and detect the subject for reminders.</li>
-        <li>Host access to <code>dodopayments.com</code> - to validate your Pro license with our payment processor.</li>
-      </ul>
-    </div>
-
-    <div class="product-block product-block--mapwand">
-      <h3>Mapwand</h3>
-      <ul>
-        <li><code>storage</code> - to save your free-tier counter, speed preference, license key and per-item deletion history.</li>
-        <li><code>scripting</code> - required by Chrome Manifest V3 for the content script that performs deletions on your behalf.</li>
-        <li><code>activeTab</code> - so the extension only acts on the Google Maps tab you have open when you click the popup.</li>
-        <li>Host access to <code>www.google.com/maps/*</code> and <code>maps.google.com/*</code> - so the deletion content script can run on your Google Maps "Your contributions" page.</li>
-        <li>Host access to <code>live.dodopayments.com</code> and <code>checkout.dodopayments.com</code> - to open the Pro checkout page and validate your license key against Dodo's public licensing endpoint.</li>
-      </ul>
-    </div>
-
-    <div class="product-block product-block--chatwand">
-      <h3>Chatwand</h3>
-      <ul>
-        <li><code>storage</code> - to save your quick replies, folders, usage counters, license key and settings.</li>
-        <li><code>contextMenus</code> - to add the "Save as quick reply" right-click menu item.</li>
-        <li>Content-script access on supported chat/social/support sites (LinkedIn, WhatsApp Web, Slack, X/Twitter, Instagram, Messenger, Facebook, YouTube, Telegram, Discord, Microsoft Teams, HubSpot, Google Chat, Reddit, Twitch, Tawk.to, Chatwoot) - so the extension can add the quick-pick palette and expand <code>/shortcut</code>s inside the message box you are typing in on those sites.</li>
-        <li>Host access to <code>dodopayments.com</code> - to validate your Pro license with our payment processor.</li>
-      </ul>
-    </div>
-
-    <h2 id="retention">7. Data retention and deletion</h2>
+    <h2 id="retention">4. Data retention and deletion</h2>
     <p>Your data remains on your device until you delete it. You can delete individual items inside the relevant extension's UI, or remove everything by uninstalling the extension, which clears its stored data from your device. Mailwand additionally lets you export a backup of your templates at any time from its options page. To delete payment-related data held by our payment processor, contact us or see the Dodo Payments policy linked above.</p>
 
-    <h2 id="rights">8. Your rights</h2>
+    <h2 id="rights">5. Your rights</h2>
     <p>Because we (the developer) do not collect or hold your content on any server, you remain in direct control of it on your device. If you are in the EU/EEA (GDPR) or California (CCPA/CPRA), you have rights to access, correct, delete and port your personal data, and to object to certain processing. For data held by our extensions, you can exercise these rights directly inside each extension (view, edit, export, delete or uninstall). For payment data, please contact Dodo Payments or us at <strong>wisplo.support@gmail.com</strong>.</p>
 
-    <h2 id="children">9. Children</h2>
-    <p>Wisplo's extensions are productivity tools intended for general business and personal use and are not directed to children under 13 (or the minimum age in your jurisdiction).</p>
+    <h2 id="children">6. Children</h2>
+    <p>Wisplo's extensions are productivity and security tools intended for general business and personal use and are not directed to children under 13 (or the minimum age in your jurisdiction).</p>
 
-    <h2 id="changes">10. Changes to this policy</h2>
+    <h2 id="changes">7. Changes to this policy</h2>
     <p>We may update this policy from time to time. We will update the "Last updated" date above and, for material changes, note them in each extension's store listing or release notes.</p>
 
-    <h2 id="contact">11. Contact</h2>
+    <h2 id="contact">8. Contact</h2>
     <p>Questions about this policy or your data: <strong>wisplo.support@gmail.com</strong>.</p>
 
     <hr />
-    <p class="meta">Gmail and Google are trademarks of Google LLC. Outlook, Hotmail and Microsoft are trademarks of Microsoft Corporation. Yahoo is a trademark of Yahoo Inc. LinkedIn, WhatsApp, Slack, X, Instagram, Messenger, Facebook, YouTube, Telegram, Discord, Microsoft Teams, HubSpot, Reddit, Twitch, Tawk.to and Chatwoot are trademarks of their respective owners. Wisplo's extensions (Mailwand, Mapwand, Chatwand) are independent tools and are not affiliated with, endorsed by, or sponsored by any of the companies or platforms named on this page.</p>
+    <p class="meta">Gmail and Google are trademarks of Google LLC. Outlook, Hotmail and Microsoft are trademarks of Microsoft Corporation. Yahoo is a trademark of Yahoo Inc. LinkedIn, WhatsApp, Slack, X, Instagram, Messenger, Facebook, YouTube, Telegram, Discord, Microsoft Teams, HubSpot, Reddit, Twitch, Tawk.to and Chatwoot are trademarks of their respective owners. ChatGPT and OpenAI are trademarks of OpenAI; Claude and Anthropic are trademarks of Anthropic; Gemini is a trademark of Google LLC; Copilot is a trademark of Microsoft Corporation; Mistral and Le Chat are trademarks of Mistral AI; Poe is a trademark of Quora, Inc.; Perplexity is a trademark of Perplexity AI, Inc.; DeepSeek is a trademark of its respective owner. Wisplo's extensions (Mailwand, Mapwand, Chatwand, PasteSentinel) are independent tools and are not affiliated with, endorsed by, or sponsored by any of the companies or platforms named on this page.</p>
 
     <a class="back-link" href="index.html">&larr; Back to Wisplo</a>
   </div>
