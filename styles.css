@@ -1,0 +1,698 @@
+/* ==========================================================================
+   Wisplo shared design system
+   Signature devices: the tick-rule (a ruler/gauge divider) and the mark
+   (a pen-stroke underline in a product's accent color) - both derived from
+   the "small precision instrument" idea behind every Wisplo product name
+   ending in "-wand".
+   ========================================================================== */
+
+:root {
+  /* Neutral base - warm paper, not stark white */
+  --paper: #faf9f6;
+  --paper-raised: #ffffff;
+  --ink: #1c1b1a;
+  --ink-soft: #5b5751;
+  --ink-faint: #8a857c;
+  --hairline: #e4e0d8;
+  --hairline-strong: #d3cdc0;
+
+  /* Wisplo (studio-level) accent - restrained, not a product color */
+  --studio: #2b2926;
+  --studio-brass: #9c7a44;
+
+  /* Product accents - match each extension's live icon/UI, do not change */
+  --mailwand: #4f46e5;
+  --mailwand-soft: #eef2ff;
+  --mapwand: #0d9488;
+  --mapwand-soft: #ecfdf9;
+  --chatwand: #ea580c;
+  --chatwand-soft: #fff3ea;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 14px;
+  --space-4: 22px;
+  --space-5: 34px;
+  --space-6: 54px;
+  --space-7: 86px;
+
+  --shadow-sm: 0 1px 2px rgba(28, 27, 26, 0.05);
+  --shadow-md: 0 10px 30px rgba(28, 27, 26, 0.08);
+
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Public Sans", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--studio);
+  text-decoration-color: var(--hairline-strong);
+  text-underline-offset: 3px;
+}
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+::selection {
+  background: var(--studio-brass);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--studio-brass);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--paper-raised);
+  border: 1px solid var(--hairline);
+  padding: 1px 6px;
+  border-radius: 5px;
+  color: var(--ink);
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.wrap--narrow {
+  max-width: 760px;
+}
+
+/* -------------------------------------------------------------------------
+   Product "mark" - a pen-stroke underline in the product's accent color.
+   Usage: <span class="mark mark--mailwand">Mailwand</span>
+   ------------------------------------------------------------------------- */
+.mark {
+  position: relative;
+  white-space: nowrap;
+  font-weight: 700;
+  color: var(--ink);
+}
+.mark::after {
+  content: "";
+  position: absolute;
+  left: -1%;
+  right: -3%;
+  bottom: -0.1em;
+  height: 0.1em;
+  min-height: 3px;
+  border-radius: 2px 4px 3px 5px;
+  transform: rotate(-0.7deg);
+  background: var(--mark-color, var(--studio-brass));
+}
+.mark--mailwand { --mark-color: var(--mailwand); }
+.mark--mapwand { --mark-color: var(--mapwand); }
+.mark--chatwand { --mark-color: var(--chatwand); }
+
+/* -------------------------------------------------------------------------
+   Tick-rule - a ruler/gauge divider used site-wide instead of a plain
+   hairline. Purely CSS: a row of ticks sitting on a baseline.
+   ------------------------------------------------------------------------- */
+.tick-rule {
+  height: 10px;
+  border-bottom: 1px solid var(--hairline);
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--hairline-strong) 0,
+    var(--hairline-strong) 1px,
+    transparent 1px,
+    transparent 26px
+  );
+  background-position: bottom left;
+  background-size: auto 8px;
+  background-repeat: repeat-x;
+  margin: 0;
+}
+.tick-rule--tight {
+  height: 7px;
+  background-size: auto 5px;
+}
+
+/* -------------------------------------------------------------------------
+   Nav
+   ------------------------------------------------------------------------- */
+header.nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(250, 249, 246, 0.86);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--hairline);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 66px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.brand:hover {
+  text-decoration: none;
+}
+.brand svg {
+  flex: none;
+  color: var(--studio-brass);
+}
+.brand small {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--ink-faint);
+  font-size: 12.5px;
+  margin-left: 2px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+.nav-links a:not(.btn) {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+.nav-links a:not(.btn):hover {
+  color: var(--ink);
+}
+@media (max-width: 700px) {
+  .nav-links a:not(.btn) {
+    display: none;
+  }
+}
+@media (max-width: 400px) {
+  .brand small {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Buttons
+   ------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--studio);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14.5px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 1px solid var(--studio);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+.btn:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn:active {
+  transform: translateY(0);
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--hairline-strong);
+}
+.btn.ghost:hover {
+  background: var(--paper-raised);
+  border-color: var(--ink-faint);
+}
+.btn--accent {
+  --accent: var(--studio-brass);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* -------------------------------------------------------------------------
+   Sections / type scale
+   ------------------------------------------------------------------------- */
+section {
+  padding: var(--space-6) 0;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+h2.sec {
+  font-size: 32px;
+  margin: 0 0 10px;
+  text-align: center;
+}
+p.sub {
+  font-size: 16.5px;
+  color: var(--ink-faint);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--space-5);
+}
+.alt {
+  background: var(--paper-raised);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* -------------------------------------------------------------------------
+   Cards / grids
+   ------------------------------------------------------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 820px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .grid { grid-template-columns: 1fr; }
+}
+.card {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  padding: 26px;
+  background: var(--paper-raised);
+}
+.card .ic {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 19px;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+}
+.card h3 {
+  font-size: 17.5px;
+  margin: 0 0 7px;
+}
+.card p {
+  margin: 0;
+  font-size: 14.75px;
+  color: var(--ink-soft);
+}
+
+/* Steps */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 700px) {
+  .steps { grid-template-columns: 1fr; }
+}
+.step {
+  padding: 26px;
+  background: var(--paper-raised);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+}
+.step .n {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--accent, var(--studio-brass));
+  margin-bottom: 10px;
+}
+.step h3 {
+  font-size: 16.5px;
+  margin: 0 0 6px;
+}
+.step p {
+  margin: 0;
+  font-size: 14.5px;
+}
+
+/* Pricing */
+.prices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+@media (max-width: 680px) {
+  .prices { grid-template-columns: 1fr; }
+}
+.price {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  background: var(--paper-raised);
+  position: relative;
+}
+.price.feature {
+  border: 1.5px solid var(--accent, var(--studio-brass));
+  box-shadow: var(--shadow-md);
+}
+.price .tag {
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  background: var(--accent, var(--studio-brass));
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+.price h3 {
+  font-size: 19px;
+  margin: 0 0 4px;
+}
+.price .amt {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 6px 0 2px;
+}
+.price .amt small {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink-faint);
+}
+.price ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+.price li {
+  padding: 6px 0 6px 26px;
+  position: relative;
+  font-size: 14.5px;
+}
+.price li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--accent, var(--studio-brass));
+}
+.price .vat {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 14px;
+}
+
+/* FAQ */
+.faq {
+  max-width: 760px;
+  margin: 0 auto;
+}
+details {
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  background: var(--paper-raised);
+  overflow: hidden;
+}
+summary {
+  cursor: pointer;
+  padding: 17px 22px;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 15.5px;
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+summary::after {
+  content: "+";
+  float: right;
+  color: var(--accent, var(--studio-brass));
+  font-weight: 800;
+  font-family: var(--font-display);
+}
+details[open] summary::after {
+  content: "\2212";
+}
+details .a {
+  padding: 0 22px 20px;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+}
+
+/* CTA band */
+.cta-band {
+  background: var(--paper-raised);
+  border-top: 3px solid var(--accent, var(--studio-brass));
+  text-align: center;
+  padding: 60px 0;
+}
+.cta-band h2 {
+  font-size: 30px;
+  margin: 0 0 10px;
+}
+.cta-band p {
+  color: var(--ink-faint);
+  margin: 0 0 26px;
+  font-size: 16px;
+}
+
+/* Platform chips */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.chips span {
+  background: var(--paper-raised);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+/* -------------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------------- */
+footer.site {
+  background: var(--studio);
+  color: #cfcbc2;
+  padding: 54px 0 32px;
+  font-size: 14px;
+}
+footer.site a {
+  color: #e8e2d3;
+  text-decoration: none;
+}
+footer.site a:hover {
+  text-decoration: underline;
+}
+footer.site .cols {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 32px;
+}
+footer.site .brand {
+  color: #fff;
+}
+footer.site .brand svg {
+  color: var(--studio-brass);
+}
+footer.site h4 {
+  color: #fff;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0 0 14px;
+  font-family: var(--font-body);
+}
+footer.site ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+footer.site li {
+  margin-bottom: 9px;
+}
+footer.site .legal {
+  border-top: 1px solid #423e38;
+  padding-top: 22px;
+  color: #8f897d;
+  font-size: 12.75px;
+  line-height: 1.7;
+}
+
+/* -------------------------------------------------------------------------
+   Legal pages
+   ------------------------------------------------------------------------- */
+.legal-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: start;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 48px 24px 90px;
+}
+@media (max-width: 820px) {
+  .legal-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.legal-toc {
+  position: sticky;
+  top: 90px;
+  font-size: 13.5px;
+}
+.legal-toc .tick-rule {
+  margin-bottom: 14px;
+}
+.legal-toc a {
+  display: block;
+  padding: 5px 0;
+  color: var(--ink-faint);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  padding-left: 12px;
+  margin-left: -13px;
+}
+.legal-toc a:hover {
+  color: var(--ink);
+  border-left-color: var(--studio-brass);
+}
+.legal-body h1 {
+  font-size: 34px;
+  margin-bottom: 8px;
+}
+.legal-body .meta {
+  color: var(--ink-faint);
+  font-size: 13.5px;
+  margin-bottom: 28px;
+}
+.legal-body h2 {
+  font-size: 20px;
+  margin-top: 38px;
+  margin-bottom: 10px;
+  scroll-margin-top: 90px;
+}
+.legal-body h3 {
+  font-size: 16px;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+.legal-body p, .legal-body li {
+  font-size: 15px;
+}
+.legal-body ul {
+  padding-left: 22px;
+}
+.legal-body .box {
+  background: var(--paper-raised);
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--studio-brass);
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+.legal-body .product-block {
+  border-left: 3px solid var(--hairline-strong);
+  padding: 4px 20px;
+  margin: 20px 0;
+}
+.legal-body .product-block--mailwand { border-left-color: var(--mailwand); }
+.legal-body .product-block--mapwand { border-left-color: var(--mapwand); }
+.legal-body .product-block--chatwand { border-left-color: var(--chatwand); }
+.legal-body hr {
+  border: none;
+  border-top: 1px solid var(--hairline);
+  margin: 40px 0 20px;
+}
+.back-link {
+  display: inline-block;
+  margin-top: 40px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Minimal top bar used on legal pages instead of the full nav */
+.top-min {
+  border-bottom: 1px solid var(--hairline);
+}
+.top-min .wrap {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

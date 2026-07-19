@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /privacy-policy.html
+Disallow: /terms.html
+Disallow: /refund.html
+
+Sitemap: https://wisplo.github.io/sitemap.xml

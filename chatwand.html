@@ -3,123 +3,87 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Chatwand - Quick Reply, Canned Response & Text Expander for LinkedIn, WhatsApp, Slack & X</title>
-<meta name="description" content="Chatwand is a quick reply, canned response and text-expander Chrome extension. Save message templates once, insert with one click or a /shortcut, right inside LinkedIn, WhatsApp, Slack, X, Instagram, Discord, Teams and more. Private by design - everything stays on your device." />
+<title>Chatwand - Quick Reply, Canned Response &amp; Text Expander for LinkedIn, WhatsApp, Slack &amp; X</title>
+<meta name="description" content="Chatwand is a quick reply, canned response and text-expander Chrome extension. Save message templates once, insert with one click or a /shortcut, right inside LinkedIn, WhatsApp, Slack, X, Instagram, Discord, Teams and more." />
 <meta name="keywords" content="quick reply extension, canned responses, text expander, chat templates, message templates, /shortcut, WhatsApp quick reply, Slack canned response, LinkedIn message templates" />
+<link rel="canonical" href="https://wisplo.github.io/chatwand.html" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Wisplo" />
+<meta property="og:title" content="Chatwand - Quick replies &amp; canned responses for chat" />
+<meta property="og:description" content="Reply everywhere you chat, in one click. Save quick replies once, insert them into LinkedIn, WhatsApp, Slack, X, Discord and more." />
+<meta property="og:url" content="https://wisplo.github.io/chatwand.html" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Chatwand - Quick replies for chat" />
+<meta name="twitter:description" content="Reply everywhere you chat, in one click. Free plan available." />
+
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ea580c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Chatwand",
+  "applicationCategory": "BrowserApplication",
+  "operatingSystem": "Chrome",
+  "url": "https://wisplo.github.io/chatwand.html",
+  "description": "Quick replies, canned responses and a text expander for LinkedIn, WhatsApp, Slack, X and other chat apps.",
+  "offers": [
+    { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Pro", "price": "4.99", "priceCurrency": "USD" }
+  ],
+  "publisher": { "@type": "Organization", "name": "Wisplo" }
+}
+</script>
+
 <style>
-  :root{
-    --orange:#ea580c; --orange2:#f97316; --ink:#111827; --body:#374151;
-    --muted:#6b7280; --line:#e5e7eb; --bg:#ffffff; --soft:#fff7f2; --soft2:#f3f4f6;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--body);line-height:1.65;background:var(--bg);}
-  a{color:var(--orange);text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 22px;}
-  header.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink);font-size:18px;}
-  .brand svg{flex:none;}
-  .brand small{font-weight:600;color:var(--muted);font-size:12px;}
-  .nav-links{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:600;}
-  .nav-links a{color:var(--body);}
-  .btn{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:11px 20px;border-radius:11px;font-size:14px;border:none;cursor:pointer;}
-  .btn:hover{background:#c2410c;text-decoration:none;}
-  .btn.ghost{background:#fff;color:var(--orange);border:1px solid var(--line);}
-  .btn.ghost:hover{background:var(--soft);}
-  @media(max-width:680px){.nav-links a:not(.btn):not(.home){display:none;}}
-  .hero{padding:72px 0 56px;background:linear-gradient(180deg,var(--soft),#fff);}
-  .hero h1{font-size:42px;line-height:1.12;color:var(--ink);margin:0 0 18px;letter-spacing:-.5px;}
-  .hero p.lead{font-size:19px;color:var(--body);max-width:680px;margin:0 0 28px;}
-  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
-  .hero .note{font-size:13px;color:var(--muted);margin-top:14px;}
-  .pill{display:inline-block;background:#fff1e6;color:var(--orange);font-weight:700;font-size:12.5px;padding:6px 13px;border-radius:999px;margin-bottom:20px;letter-spacing:.2px;}
-  @media(max-width:680px){.hero h1{font-size:32px;}}
-  section{padding:58px 0;}
-  h2.sec{font-size:28px;color:var(--ink);margin:0 0 8px;text-align:center;}
-  p.sub{font-size:16px;color:var(--muted);text-align:center;max-width:600px;margin:0 auto 38px;}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-  @media(max-width:820px){.grid{grid-template-columns:1fr 1fr;}}
-  @media(max-width:540px){.grid{grid-template-columns:1fr;}}
-  .card{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff;}
-  .card .ic{width:42px;height:42px;border-radius:11px;background:var(--soft);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-  .card h3{margin:0 0 6px;font-size:17px;color:var(--ink);}
-  .card p{margin:0;font-size:14.5px;color:var(--body);}
-  .alt{background:var(--soft);}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-  @media(max-width:680px){.steps{grid-template-columns:1fr;}}
-  .step{position:relative;padding:24px;background:#fff;border:1px solid var(--line);border-radius:16px;}
-  .step .n{width:30px;height:30px;border-radius:50%;background:var(--orange);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px;margin-bottom:12px;}
-  .step h3{margin:0 0 6px;font-size:16px;color:var(--ink);}
-  .step p{margin:0;font-size:14.5px;}
-  .prices{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:760px;margin:0 auto;}
-  @media(max-width:680px){.prices{grid-template-columns:1fr;}}
-  .price{border:1px solid var(--line);border-radius:18px;padding:30px;background:#fff;position:relative;}
-  .price.feature{border:2px solid var(--orange);box-shadow:0 12px 30px rgba(234,88,12,.12);}
-  .price .tag{position:absolute;top:-12px;right:22px;background:var(--orange);color:#fff;font-size:11.5px;font-weight:700;padding:4px 11px;border-radius:999px;}
-  .price h3{margin:0 0 4px;font-size:20px;color:var(--ink);}
-  .price .amt{font-size:34px;font-weight:800;color:var(--ink);margin:8px 0;}
-  .price .amt small{font-size:15px;font-weight:600;color:var(--muted);}
-  .price ul{list-style:none;padding:0;margin:16px 0 0;}
-  .price li{padding:6px 0 6px 26px;position:relative;font-size:14.5px;}
-  .price li:before{content:"✓";position:absolute;left:0;color:var(--orange);font-weight:800;}
-  .price .vat{font-size:12px;color:var(--muted);margin-top:14px;}
-  .platforms{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:820px;margin:0 auto;}
-  .platforms span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:600;color:var(--body);}
-  .faq{max-width:760px;margin:0 auto;}
-  details{border:1px solid var(--line);border-radius:12px;padding:0;margin-bottom:12px;background:#fff;overflow:hidden;}
-  summary{cursor:pointer;padding:16px 20px;font-weight:700;color:var(--ink);font-size:15.5px;list-style:none;}
-  summary::-webkit-details-marker{display:none;}
-  summary:after{content:"+";float:right;color:var(--orange);font-weight:800;}
-  details[open] summary:after{content:"–";}
-  details .a{padding:0 20px 18px;font-size:14.5px;color:var(--body);}
-  footer{background:#0f1117;color:#cbd2e0;padding:46px 0 30px;font-size:14px;}
-  footer a{color:#ffcfa8;}
-  footer .cols{display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;margin-bottom:28px;}
-  footer .brand{color:#fff;}
-  footer h4{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:.6px;margin:0 0 12px;}
-  footer ul{list-style:none;padding:0;margin:0;}
-  footer li{margin-bottom:8px;}
-  footer .legal{border-top:1px solid #232734;padding-top:20px;color:#8a91a3;font-size:13px;line-height:1.6;}
-  .cta-band{background:linear-gradient(135deg,var(--orange),var(--orange2));color:#fff;text-align:center;padding:56px 0;}
-  .cta-band h2{color:#fff;font-size:28px;margin:0 0 10px;}
-  .cta-band p{color:#ffe9d6;margin:0 0 24px;font-size:16px;}
-  .cta-band .btn{background:#fff;color:var(--orange);}
-  .cta-band .btn:hover{background:#fff2e6;}
+  body { --accent: var(--chatwand); --accent-soft: var(--chatwand-soft); }
+  .hero { padding: 60px 0 52px; }
+  .hero h1 { font-size: 44px; line-height: 1.14; margin: 0 0 18px; max-width: 660px; }
+  .hero p.lead { font-size: 18.5px; max-width: 640px; margin: 0 0 28px; }
+  @media (max-width: 640px) { .hero h1 { font-size: 33px; } }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .note { font-size: 13px; color: var(--ink-faint); margin-top: 16px; }
+  .pill { display: inline-block; font-family: var(--font-mono); font-size: 12px; color: var(--accent); background: var(--accent-soft); padding: 6px 13px; border-radius: 999px; margin-bottom: 22px; letter-spacing: 0.02em; }
 </style>
 </head>
 <body>
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="index.html" style="text-decoration:none;">
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="1.6" fill="currentColor" stroke="none"/><line x1="12" y1="8" x2="12" y2="21"/><line x1="8.7" y1="12" x2="15.3" y2="12"/><line x1="9.3" y1="16.5" x2="14.7" y2="16.5"/></svg>
       Chatwand <small>by Wisplo</small>
     </a>
     <nav class="nav-links">
-      <a class="home" href="index.html">← Wisplo</a>
+      <a class="nav-home" href="index.html">&larr; Wisplo</a>
       <a href="#features">Features</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
-      <a class="btn" href="#" id="getChatwandTop">Get Chatwand</a>
+      <a class="btn" href="https://chromewebstore.google.com/detail/chatwand-quick-replies-ca/enoifickfoncepigjicllgffecklnncp" target="_blank" rel="noopener">Get Chatwand</a>
     </nav>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
-    <span class="pill">For LinkedIn · WhatsApp · Slack · X · Instagram · Discord · Teams &amp; more</span>
-    <h1>Quick replies &amp; canned responses - reply everywhere you chat, in one click.</h1>
-    <p class="lead">Chatwand is a text-expander browser extension that saves your quick replies and canned responses, drops them into the chat box with a click or a <code>/shortcut</code>, and even fills in personal details for you. Everything stays on your own device.</p>
+    <span class="pill">For LinkedIn &middot; WhatsApp &middot; Slack &middot; X &middot; Instagram &middot; Discord &middot; Teams &amp; more</span>
+    <h1>Quick replies &amp; canned responses, reply everywhere you chat, in one click.</h1>
+    <p class="lead"><span class="mark mark--chatwand">Chatwand</span> is a text-expander browser extension that saves your quick replies and canned responses, drops them into the chat box with a click or a <code>/shortcut</code>, and even fills in personal details for you. Everything stays on your own device.</p>
     <div class="cta-row">
-      <a class="btn" href="#" id="getChatwandHero">Add to Chrome - it's free</a>
+      <a class="btn" href="https://chromewebstore.google.com/detail/chatwand-quick-replies-ca/enoifickfoncepigjicllgffecklnncp" target="_blank" rel="noopener">Add to Chrome - it's free</a>
       <a class="btn ghost" href="#how">See how it works</a>
     </div>
-    <p class="note">No account needed · Free plan available · Works right inside the chat apps you already use</p>
+    <p class="note">No account needed &middot; Free plan available &middot; Works right inside the chat apps you already use</p>
   </div>
 </section>
+
+<div class="tick-rule"></div>
 
 <section id="features">
   <div class="wrap">
@@ -127,32 +91,32 @@
     <p class="sub">Built for support, sales, recruiting, community management and anyone who types the same reply twice a day.</p>
     <div class="grid">
       <div class="card">
-        <div class="ic">💬</div>
+        <div class="ic">&#128172;</div>
         <h3>Quick-pick palette</h3>
         <p>Save the replies you send over and over. Insert them instantly from a floating palette, a keyboard shortcut, or by typing <code>/your-shortcut</code> while you type.</p>
       </div>
       <div class="card">
-        <div class="ic">⚡</div>
+        <div class="ic">&#9889;</div>
         <h3>Text-expander /shortcuts</h3>
         <p>Type a short code like <code>/thanks</code> and watch your saved reply expand in place. No copy-paste, no switching tabs.</p>
       </div>
       <div class="card">
-        <div class="ic">🔡</div>
+        <div class="ic">&#128253;</div>
         <h3>Fill-in fields</h3>
         <p>Add <code>{{name}}</code>, <code>{{company}}</code> and more. Chatwand prompts you to fill them in before inserting, so every reply feels personal.</p>
       </div>
       <div class="card">
-        <div class="ic">🗂️</div>
+        <div class="ic">&#128193;</div>
         <h3>Folders &amp; search</h3>
-        <p>Organize replies into folders so the right one is always a click away - even with dozens saved.</p>
+        <p>Organize replies into folders so the right one is always a click away, even with dozens saved.</p>
       </div>
       <div class="card">
-        <div class="ic">🌐</div>
+        <div class="ic">&#127760;</div>
         <h3>Works everywhere you chat</h3>
         <p>LinkedIn, WhatsApp, Slack, X, Instagram, Messenger, Facebook, YouTube, Telegram, Discord, Teams, HubSpot, Google Chat, Reddit, Twitch and more.</p>
       </div>
       <div class="card">
-        <div class="ic">🔒</div>
+        <div class="ic">&#128274;</div>
         <h3>Private by design</h3>
         <p>No servers and no tracking. Your quick replies are stored locally on your device. Chatwand never sends your messages anywhere.</p>
       </div>
@@ -166,17 +130,17 @@
     <p class="sub">Install once, then work entirely inside the chat apps you already use.</p>
     <div class="steps">
       <div class="step">
-        <div class="n">1</div>
+        <div class="n">01</div>
         <h3>Add the extension</h3>
         <p>Install Chatwand from the Chrome Web Store. There's nothing to sign up for.</p>
       </div>
       <div class="step">
-        <div class="n">2</div>
+        <div class="n">02</div>
         <h3>Save your quick replies</h3>
         <p>Paste in the replies you send most, give each a shortcut, and organize them into folders.</p>
       </div>
       <div class="step">
-        <div class="n">3</div>
+        <div class="n">03</div>
         <h3>Reply in one click</h3>
         <p>Open any supported chat, insert a reply with the palette or a <code>/shortcut</code>, and get back to the conversation.</p>
       </div>
@@ -188,7 +152,7 @@
   <div class="wrap">
     <h2 class="sec">Works with the apps you already use</h2>
     <p class="sub">One tool, every chat.</p>
-    <div class="platforms">
+    <div class="chips">
       <span>LinkedIn</span><span>WhatsApp</span><span>Slack</span><span>X</span><span>Instagram</span>
       <span>Messenger</span><span>Facebook</span><span>YouTube</span><span>Telegram</span><span>Discord</span>
       <span>Microsoft Teams</span><span>HubSpot</span><span>Google Chat</span><span>Reddit</span><span>Twitch</span>
@@ -233,7 +197,7 @@
   <div class="wrap">
     <h2>Stop retyping the same replies.</h2>
     <p>Add Chatwand and reply everywhere you chat, in one click.</p>
-    <a class="btn" href="#" id="getChatwandBand">Add to Chrome - it's free</a>
+    <a class="btn" href="https://chromewebstore.google.com/detail/chatwand-quick-replies-ca/enoifickfoncepigjicllgffecklnncp" target="_blank" rel="noopener">Add to Chrome - it's free</a>
   </div>
 </div>
 
@@ -269,15 +233,15 @@
   </div>
 </section>
 
-<footer>
+<footer class="site">
   <div class="wrap">
     <div class="cols">
       <div style="max-width:280px;">
-        <div class="brand" style="display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;margin-bottom:10px;">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#ffcfa8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <div class="brand" style="display:flex; align-items:center; gap:9px; margin-bottom:12px;">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--chatwand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           Chatwand
         </div>
-        <p style="margin:0;color:#9aa1b3;">Quick replies and canned responses for LinkedIn, WhatsApp, Slack, X and more. A <a href="index.html">Wisplo</a> product.</p>
+        <p style="margin:0; color:#a8a297;">Quick replies and canned responses for LinkedIn, WhatsApp, Slack, X and more. A <a href="index.html">Wisplo</a> product.</p>
       </div>
       <div>
         <h4>Product</h4>
@@ -305,14 +269,10 @@
       </div>
     </div>
     <div class="legal">
-      © <span id="yr">2026</span> Chatwand - a product of Wisplo. Operated by Sanjaya Thilakabandara, trading as Wisplo (Sweden).
-      Payments processed by Dodo Payments as merchant of record.
-      LinkedIn, WhatsApp, Slack, X, Instagram, Messenger, Facebook, YouTube, Telegram, Discord, Microsoft Teams, HubSpot,
-      Google Chat, Reddit, Twitch, Tawk.to and Chatwoot are trademarks of their respective owners; Chatwand is an
-      independent product and is not affiliated with, endorsed by, or sponsored by any of them.
+      &copy; <span id="yr">2026</span> Chatwand, a product of Wisplo. Operated by Sanjaya Thilakabandara, trading as Wisplo (Sweden). Payments processed by Dodo Payments as merchant of record. LinkedIn, WhatsApp, Slack, X, Instagram, Messenger, Facebook, YouTube, Telegram, Discord, Microsoft Teams, HubSpot, Google Chat, Reddit, Twitch, Tawk.to and Chatwoot are trademarks of their respective owners; Chatwand is an independent product and is not affiliated with, endorsed by, or sponsored by any of them.
     </div>
   </div>
-  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </footer>
 
 </body>
