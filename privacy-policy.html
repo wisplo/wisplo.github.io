@@ -35,7 +35,7 @@
 
   <div class="legal-body">
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective date: 7 June 2026 &middot; Last updated: 29 October 2026</p>
+    <p class="meta">Effective date: 7 June 2026 &middot; Last updated: 1 November 2026</p>
 
     <p>This Privacy Policy explains how the browser extensions published by <strong>Wisplo</strong> ("Wisplo", "we", "us") handle information. Wisplo is operated by <strong>Sanjaya Thilakabandara, trading as Wisplo</strong>, based in Sweden. You can contact us at <strong>wisplo.support@gmail.com</strong>.</p>
 
@@ -97,17 +97,18 @@
           <li><strong>License key</strong> - if you've upgraded to Pro, your license key string is stored so the extension knows you're a paying customer.</li>
           <li><strong>Per-item deletion history</strong> - a local record of each review you deleted: the place name shown on the card, the date you deleted it, the speed setting you used, and (when available) a link back to that place on Google Maps. Kept on your device only and capped at the most recent 100 entries.</li>
           <li><strong>Rating-prompt flag</strong> - a yes/no value recording that you've already clicked through to rate Mapwand, so it doesn't ask again.</li>
-          <li><strong>Current run state</strong> - progress of a deletion run in progress and its last result, held in Chrome's session storage so the popup can be closed and reopened. Cleared when the browser closes.</li>
+          <li><strong>Time-filter choice</strong> - which reviews you last chose to delete (for example "older than 2 years"), so the popup remembers it.</li>
+          <li><strong>Current run state</strong> - progress of a deletion run in progress, its last result, and the last count of your reviews (how many there are and how many match your filter - numbers only, no review content), held in Chrome's session storage so the popup can be closed and reopened. Cleared when the browser closes.</li>
         </ul>
         <p>When you install Mapwand it opens a getting-started page on wisplo.github.io, and when you uninstall it Chrome opens a short feedback page there. These are ordinary web pages: the extension sends no data with them, and feedback is only ever sent if you choose to email us.</p>
-        <p>Mapwand's in-page component runs on <code>www.google.com/maps/*</code> and <code>maps.google.com/*</code> only. It locates the contribution cards on your "Your contributions" page and clicks the same delete menu you would click yourself. It never reads, copies or transmits any other content from the page.</p>
+        <p>Mapwand's in-page component runs on <code>www.google.com/maps/*</code> and <code>maps.google.com/*</code> only. It locates the contribution cards on your "Your contributions" page, counts them, reads the date Google shows on each review (for example "3 years ago") when you choose a time filter, and clicks the same delete menu you would click yourself. Those dates are only used on the spot to decide which reviews match - they are never stored or sent. It never reads, copies or transmits any other content from the page.</p>
 
         <h4>Where it's stored</h4>
-        <p>All data (free counter, speed preference, license key, deletion history, rating-prompt flag) is stored using Chrome's <code>storage.local</code> on your device only; the current run state uses <code>storage.session</code>. Nothing is synced across devices, and uninstalling Mapwand deletes all of it.</p>
+        <p>All data (free counter, speed preference, license key, deletion history, rating-prompt flag, time-filter choice) is stored using Chrome's <code>storage.local</code> on your device only; the current run state uses <code>storage.session</code>. Nothing is synced across devices, and uninstalling Mapwand deletes all of it.</p>
 
         <h4>Permissions and why</h4>
         <ul>
-          <li><code>storage</code> - to save your free-tier counter, speed preference, license key, per-item deletion history and rating-prompt flag.</li>
+          <li><code>storage</code> - to save your free-tier counter, speed preference, license key, per-item deletion history, rating-prompt flag and time-filter choice.</li>
           <li><code>activeTab</code> - so the extension only acts on the Google Maps tab you have open when you click the popup.</li>
           <li>Host access to <code>www.google.com/maps/*</code> and <code>maps.google.com/*</code> - so the deletion content script can run on your Google Maps "Your contributions" page.</li>
           <li>Host access to <code>live.dodopayments.com</code> and <code>checkout.dodopayments.com</code> - to open the Pro checkout page and validate your license key against Dodo's public licensing endpoint.</li>
